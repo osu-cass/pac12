@@ -1,0 +1,115 @@
+// Imports
+@import 'header';
+@import 'footer';
+
+// General
+body {
+	background:#000;
+	font-family:Arial;
+	color:#FFF;
+	font-size:15px;
+}
+div {
+	position:relative;
+}
+h1 {
+	color:#00bbf1;
+	font-size:36px;
+	font-family: "alternate-gothic-no-1-d",sans-serif;
+}
+
+ol, ul {
+	margin-left:-20px;
+}
+.pad {
+	padding:10px;
+}
+
+.btn.btn-warning.signout {
+	position: absolute;
+	display: block;
+	right: 200px;
+	top: 10px;
+	@media (max-width: 768px) {
+		right: 30px;
+	}
+}
+
+#masterContainer {
+	max-width:1332px;
+	min-height:520px;
+	margin:0 auto;
+	overflow:hidden;
+}
+
+.colwrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.menu-social {
+	list-style:none;
+	overflow:hidden;
+	li {
+		display:inline-block;
+		a {
+			display:inline-block;
+			background:url('../images/sprite-social.png') no-repeat;
+			margin:0 2px;
+			width:28px;
+			height:26px;
+		}
+		.fb {
+			background-position:0 0;
+			&:hover {
+				background-position:0 -40px;
+			}
+		}
+		.tw {
+			background-position:-33px 0;
+			&:hover {
+				background-position:-33px -40px;
+			}
+		}
+		.gp {
+			background-position:-66px 0;
+			&:hover {
+				background-position:-66px -40px;
+			}
+		}
+		.in {
+			background-position:-99px 0;
+			&:hover {
+				background-position:-99px -40px;
+			}
+		}
+		.em {
+			background-position:-133px 0;
+			&:hover {
+				background-position:-133px -40px;
+			}
+		}
+	}
+}
+
+.sponsors {
+	ul.list-sponsors {
+		list-style: none;
+		padding: 0 20px;
+		li {
+			margin: 0 20px 20px 20px;
+			/*float: left;*/
+			a {
+				text-decoration: none;
+			}
+			.sponsor-title {
+				color: #fff;
+			}
+			.sponsor-banner {
+				/*max-width: 200px;
+				max-height: 200px;*/
+			}
+		}
+	}
+}
