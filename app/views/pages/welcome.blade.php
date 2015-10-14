@@ -143,7 +143,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
 </div>
 <div id="header-sub">
 	@include('alerts')
-	<h1>PAC-12 FITNESS CHALLENGE</h1>
+	<h1>PAC-12 RECREATION CHALLENGE</h1>
 	<div class="text">
 		{{ $page->html }}
 		<p>
