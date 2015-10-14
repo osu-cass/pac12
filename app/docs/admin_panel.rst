@@ -19,8 +19,8 @@ What Can A Superadmin Do?
 There are nine tabs in the admin panel that can be accessed by a superadmin.
 They are:
 
-* Pages - The user can modify what is displayed on the PAC12 welcome
-            page as well as the outgoing registration message
+* Pages - The user can modify what is displayed on the PAC12 welcome page as
+  well as the outgoing registration message
 * Menus - Menus creation 
 * Users - User info modification, specifically: 
   
