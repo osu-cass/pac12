@@ -4,9 +4,8 @@ Resetting the Database
 ======================
 
 There will be occasional circumstances in which (some of the tables in) the
-database will need to be cleared. To do so, you'll need to access the database
-with ``mysql -u pac12 -p pac12`` and run the following MySQL statements in
-order:
+database will need to be cleared. To do so, you'll need to run the following
+MySQL statements in order:
   
 * Delete all times: ``TRUNCATE TABLE times;``
 
