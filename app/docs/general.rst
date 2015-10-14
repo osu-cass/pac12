@@ -1,4 +1,4 @@
-.. notes::
+.. _notes:
 
 Notes
 =====
