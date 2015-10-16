@@ -147,7 +147,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
 	<div class="text">
 		{{ $page->html }}
 		<p>
-			<a href="{{ URL::to('account') }}" class="btn btn-primary">View My Account</a>
+			<a href="{{ URL::to('account') }}" class="btn btn-primary">Register/Sign-in</a>
 		</p>
 	</div>
 </div>

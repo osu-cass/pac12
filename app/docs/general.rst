@@ -43,13 +43,3 @@ panel, the title is located in ``views/pages/welcome.blade.php``. Modify line
 If the mobile site is active, match any changes made to the title in
 ``views/pages/welcome-blade.php``.
 
-
-Quirks/Apparent Inconsistencies
--------------------------------
-
-In UserController.php, on line 520, a check is being done to validate login via
-username. Currently, users can only use their email to login, so this check is
-unnecessary.
-
-.. note::
-    If any other inconsistencies are found, please note them in this section.
