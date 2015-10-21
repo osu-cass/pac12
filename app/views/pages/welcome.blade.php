@@ -251,7 +251,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
 		{{--<a class="icon icon11" href="http://www.colorado.edu/recreation" target="_blank"></a>--}}
 		{{--<a class="icon icon12" href="http://campusrec.utah.edu/" target="_blank"></a>--}}
 	</div>
-	<p>For Pac-12 Fitness Challenge Events On Your Campus.</p>
+	<p>For Pac-12 Recreation Challenge Events On Your Campus.</p>
 </div>
 
 <div class="section s5">
@@ -280,7 +280,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
 		<div class="col-sm-6 col-xs-12">
 			<div class="area">
 				{{ $page->get_module_by_number(5) }}
-				<a class="btn btn-primary" href="/past-challenges">View Previous Challenges</a>
+				<a class="btn btn-primary" href="/past-challenges">View Previous Champions</a>
 			</div>
 		</div>
 	</div>
