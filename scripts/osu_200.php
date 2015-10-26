@@ -14,6 +14,8 @@ $filename = "osu_200";
 // set the timezone
 date_default_timezone_set('America/Los_Angeles');
 
+// get the current day's date
+$currentDate = date('Y-m-d');
 
 // open file for appending
 $file = fopen($filename, 'a+');
@@ -35,7 +37,7 @@ $connect = mysql_connect($server, $user_name, $password) or die(mysql_error());
 mysql_select_db($database, $connect) or die(mysql_error());
 
 // define SQL query - get minutes and join user table for OSU participants
-$query = "SELECT user_id, minutes, email FROM times JOIN users on users.id WHERE times.school = 'Oregon State University' AND users.id=times.user_id";
+$query = "SELECT user_id, minutes, email FROM times JOIN users on users.id WHERE times.school = 'Oregon State University' AND users.id=times.user_id AND times.date <= '$currentDate'";
  
 // execute query and store the results into an array
 $osu_users = mysql_query($query) or die(mysql_error());
