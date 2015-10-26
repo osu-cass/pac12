@@ -25,7 +25,8 @@ class AdminUserController extends AdminBaseController {
 				foreach ($terms as $term) {
 					$term = '%'.$term.'%';
 					$query->orWhere('email', 'like', $term)
-						  ->orWhere('username', 'like', $term);
+                        ->orWhere('username', 'like', $term)
+                        ->orWhere('school', 'like', $term);
 				}
 			});
 		}

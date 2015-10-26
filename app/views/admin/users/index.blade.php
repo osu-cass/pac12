@@ -32,7 +32,8 @@
 			<tr>
 				<th></th>
 				<th>ID</th>
-				<th>Type</th>
+                <th>Type</th>
+                <th>School</th>
 				<th>Email</th>
 				<th>Username</th>
 			</tr>
@@ -47,6 +48,7 @@
 				</td>
 				<td>{{ $user->id }}</td>
 				<td>{{ $user->type }}</td>
+				<td>{{ $user->school }}</td>
 				<td>{{ $user->email }}</td>
 				<td>{{ $user->username }}</td>
 			</tr>
