@@ -315,7 +315,7 @@ class UserController extends BaseController {
 			'minutes'  => 'required',
 			'date' => 'required'
 		);
-		//if(Input::get('type') != "mind") $rules['activity'] = 'required';
+		if(Input::get('type') == NULL) $rules['activity'] = 'required';
 
 		$validator = Validator::make(Input::all(), $rules);
 
@@ -331,9 +331,9 @@ class UserController extends BaseController {
 		$displayDate = date('M d, Y', strtotime($date));
 		$currentDate = date('Y-m-d');
 
-		// if ($date < $start || $date > $end) {
-		// 	return Redirect::to('log')->withInput()->withErrors('The date must be between ' . $start . ' and ' . $end);
-		// }
+		if ($date < $start || $date > $end) {
+		 	return Redirect::to('log')->withInput()->withErrors('The date must be between ' . $start . ' and ' . $end);
+		}
 
 		$minutes = intval(Input::get('minutes'));
 		if (!$minutes || $minutes < 0 || $minutes > 120) {
@@ -368,7 +368,7 @@ class UserController extends BaseController {
 		$time->save();
 
 		//Adding to school totals
-		if ($currentDate > $start && $currentDate <= $end) {
+		if ($currentDate >= $start && $currentDate <= $end) {
 			$count = Time::where('school', '=', Auth::user()->school)->groupBy('user_id')->count();
 			$schoolTotal = Total::where('school', '=', Auth::user()->school)->first();
 			$schoolTotal->minutes += $minutes;
