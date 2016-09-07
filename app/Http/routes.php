@@ -48,7 +48,7 @@ Route::get('admin/users/add', array(
     'uses' => 'AdminUserController@add'
 ));
 Route::post('admin/users/add', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminUserController@attempt_add'
 ));
 Route::get('admin/users/edit/{id}', array(
@@ -56,19 +56,19 @@ Route::get('admin/users/edit/{id}', array(
     'uses' => 'AdminUserController@edit'
 ));
 Route::post('admin/users/edit/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminUserController@attempt_edit'
 ));
 Route::post('admin/users/password/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminUserController@attempt_edit_password'
 ));
 Route::post('admin/users/delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminUserController@delete'
 ));
 Route::post('admin/users/hard-delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminUserController@hard_delete'
 ));
 Route::get('admin/users/restore/{id}', array(
@@ -88,7 +88,7 @@ Route::get('admin/languages/add', array(
     'uses' => 'AdminLanguageController@add'
 ));
 Route::post('admin/languages/add', array(
-    'before' => array('superadmin', 'csrf'),
+    'before' => 'superadmin',
     'uses' => 'AdminLanguageController@attempt_add'
 ));
 Route::get('admin/languages/edit/{id}', array(
@@ -96,11 +96,11 @@ Route::get('admin/languages/edit/{id}', array(
     'uses' => 'AdminLanguageController@edit'
 ));
 Route::post('admin/languages/edit/{id}', array(
-    'before' => array('superadmin', 'csrf'),
+    'before' => 'superadmin',
     'uses' => 'AdminLanguageController@attempt_edit'
 ));
 Route::post('admin/languages/hard-delete/{id}', array(
-    'before' => array('superadmin', 'csrf'),
+    'before' => 'superadmin',
     'uses' => 'AdminLanguageController@hard_delete'
 ));
 // Anyone can change their active (editing) language... not just super admin
@@ -121,7 +121,7 @@ Route::get('admin/pages/add', array(
     'uses' => 'AdminPageController@add'
 ));
 Route::post('admin/pages/add', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminPageController@attempt_add'
 ));
 Route::get('admin/pages/edit/{id}', array(
@@ -129,15 +129,15 @@ Route::get('admin/pages/edit/{id}', array(
     'uses' => 'AdminPageController@edit'
 ));
 Route::post('admin/pages/edit/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminPageController@attempt_edit'
 ));
 Route::post('admin/pages/delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminPageController@delete'
 ));
 Route::post('admin/pages/hard-delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminPageController@hard_delete'
 ));
 Route::get('admin/pages/restore/{id}', array(
@@ -145,7 +145,7 @@ Route::get('admin/pages/restore/{id}', array(
     'uses' => 'AdminPageController@restore'
 ));
 Route::post('admin/pages/copy', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminPageController@copy'
 ));
 Route::get('admin/pages/delete-module/{id}', array(
@@ -164,7 +164,7 @@ Route::get('admin/menus/add', array(
     'uses' => 'AdminMenuController@add'
 ));
 Route::post('admin/menus/add', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminMenuController@attempt_add'
 ));
 Route::get('admin/menus/edit/{id}', array(
@@ -172,15 +172,15 @@ Route::get('admin/menus/edit/{id}', array(
     'uses' => 'AdminMenuController@edit'
 ));
 Route::post('admin/menus/edit/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminMenuController@attempt_edit'
 ));
 Route::post('admin/menus/delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminMenuController@delete'
 ));
 Route::post('admin/menus/hard-delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminMenuController@hard_delete'
 ));
 Route::get('admin/menus/restore/{id}', array(
@@ -217,7 +217,7 @@ Route::get('admin/challenges/add', array(
     'uses' => 'AdminChallengeController@add'
 ));
 Route::post('admin/challenges/add', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminChallengeController@attempt_add'
 ));
 Route::get('admin/challenges/edit/{id}', array(
@@ -225,15 +225,15 @@ Route::get('admin/challenges/edit/{id}', array(
     'uses' => 'AdminChallengeController@edit'
 ));
 Route::post('admin/challenges/edit/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminChallengeController@attempt_edit'
 ));
 Route::post('admin/challenges/delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminChallengeController@delete'
 ));
 Route::post('admin/challenges/hard-delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminChallengeController@hard_delete'
 ));
 Route::get('admin/challenges/restore/{id}', array(
@@ -241,7 +241,7 @@ Route::get('admin/challenges/restore/{id}', array(
     'uses' => 'AdminChallengeController@restore'
 ));
 Route::post('admin/challenges/copy', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminChallengeController@copy'
 ));
 
@@ -257,7 +257,7 @@ Route::get('admin/sponsors/add', array(
     'uses' => 'AdminSponsorController@add'
 ));
 Route::post('admin/sponsors/add', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSponsorController@attempt_add'
 ));
 Route::get('admin/sponsors/edit/{id}', array(
@@ -265,15 +265,15 @@ Route::get('admin/sponsors/edit/{id}', array(
     'uses' => 'AdminSponsorController@edit'
 ));
 Route::post('admin/sponsors/edit/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSponsorController@attempt_edit'
 ));
 Route::post('admin/sponsors/delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSponsorController@delete'
 ));
 Route::post('admin/sponsors/hard-delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSponsorController@hard_delete'
 ));
 Route::get('admin/sponsors/restore/{id}', array(
@@ -281,7 +281,7 @@ Route::get('admin/sponsors/restore/{id}', array(
     'uses' => 'AdminSponsorController@restore'
 ));
 Route::post('admin/sponsors/copy', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSponsorController@copy'
 ));
 
@@ -297,7 +297,7 @@ Route::get('admin/badges/add', array(
     'uses' => 'AdminBadgeController@add'
 ));
 Route::post('admin/badges/add', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminBadgeController@attempt_add'
 ));
 Route::get('admin/badges/edit/{id}', array(
@@ -305,15 +305,15 @@ Route::get('admin/badges/edit/{id}', array(
     'uses' => 'AdminBadgeController@edit'
 ));
 Route::post('admin/badges/edit/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminBadgeController@attempt_edit'
 ));
 Route::post('admin/badges/delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminBadgeController@delete'
 ));
 Route::post('admin/badges/hard-delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminBadgeController@hard_delete'
 ));
 Route::get('admin/badges/restore/{id}', array(
@@ -321,7 +321,7 @@ Route::get('admin/badges/restore/{id}', array(
     'uses' => 'AdminBadgeController@restore'
 ));
 Route::post('admin/badges/copy', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminBadgeController@copy'
 ));
 
@@ -337,7 +337,7 @@ Route::get('admin/schools/add', array(
     'uses' => 'AdminSchoolController@add'
 ));
 Route::post('admin/schools/add', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSchoolController@attempt_add'
 ));
 Route::get('admin/schools/edit/{id}', array(
@@ -345,15 +345,15 @@ Route::get('admin/schools/edit/{id}', array(
     'uses' => 'AdminSchoolController@edit'
 ));
 Route::post('admin/schools/edit/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSchoolController@attempt_edit'
 ));
 Route::post('admin/schools/delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSchoolController@delete'
 ));
 Route::post('admin/schools/hard-delete/{id}', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSchoolController@hard_delete'
 ));
 Route::get('admin/schools/restore/{id}', array(
@@ -361,7 +361,7 @@ Route::get('admin/schools/restore/{id}', array(
     'uses' => 'AdminSchoolController@restore'
 ));
 Route::post('admin/schools/copy', array(
-    'before' => array('admin', 'csrf'),
+    'before' => 'admin',
     'uses' => 'AdminSchoolController@copy'
 ));
 
@@ -370,17 +370,17 @@ Route::post('admin/schools/copy', array(
 //------------------------
 
 Route::get('admin/reports', array(
-    'before' => array('admin'),
+    'before' => 'admin',
     'uses' => 'AdminReportController@main'
 ));
 
 Route::get('admin/report/{date}', array(
-    'before' => array('admin'),
+    'before' => 'admin',
     'uses' => 'AdminReportController@daily'
 ));
 
 Route::post('admin/report/range', array(
-    'before' => array('admin'),
+    'before' => 'admin',
     'uses' => 'AdminReportController@range'
 ));
 
@@ -396,7 +396,6 @@ Route::get('admin-signin', array(
     'uses' => 'UserController@admin_signin'
 ));
 Route::post('admin-signin', array(
-    'before' => 'csrf',
     'uses' => 'UserController@admin_attempt_signin'
 ));
 
@@ -408,7 +407,7 @@ Route::get('account', array(
     'uses' => 'UserController@account'
 ));
 Route::post('account', array(
-    'before' => array('auth', 'csrf'),
+    'before' => 'auth',
     'uses' => 'UserController@account_edit'
 ));
 Route::get('workouts', array(
@@ -451,7 +450,7 @@ Route::get('signin-fb', array(
     'uses' => 'UserController@attempt_signin_fb'
 ));
 Route::post('signup', array(
-    'before' => array('guest', 'csrf'),
+    'before' => 'guest',
     'uses' => 'UserController@attempt_signup'
 ));
 Route::get('signup', array(
@@ -459,7 +458,7 @@ Route::get('signup', array(
     'uses' => 'UserController@signup'
 ));
 Route::post('signup-fb', array(
-    'before' => array('guest', 'csrf'),
+    'before' => 'guest',
     'uses' => 'UserController@attempt_signup_fb'
 ));
 Route::get('signup-fb', array(
@@ -471,7 +470,7 @@ Route::get('signup-preva', array(
     'uses' => 'UserController@signup_preva'
 ));
 Route::post('signup-preva', array(
-    'before' => array('auth', 'csrf'),
+    'before' => 'auth',
     'uses' => 'UserController@attempt_signup_preva'
 ));
 
@@ -489,7 +488,7 @@ Route::post('change-password', 'UserController@password_change');
 // Workouts
 // --------------
 Route::post('post-time', array(
-    'before' => array('auth', 'csrf'),
+    'before' => 'auth',
     'uses' => 'UserController@post_time'
 ));
 
