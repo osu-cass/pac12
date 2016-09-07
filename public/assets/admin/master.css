@@ -1,0 +1,65 @@
+body {
+	background: rgb(225, 225, 250);
+}
+#adminMasterContainer {
+	box-shadow:1px 1px 6px rgba(0, 0, 0, 0.8);
+	background:#FFF;
+	padding-bottom:20px;
+}
+@media(min-width:768px) {
+	#adminMasterContainer {
+		margin-top:15px;
+		margin-bottom:15px;
+	}
+}
+.alert {
+	margin-top:20px;
+}
+.navbar {
+	border-radius:0;
+	margin-bottom:0;
+}
+.stripe {
+	background-color:rgb(249, 249, 249);
+}
+.pad {
+	padding:10px;
+}
+.deleteForm {
+	display:inline-block;
+	margin-bottom:15px;
+}
+
+table .deleted td {
+	background: #ffc3c6 !important;
+}
+
+.expandBelow {
+	width:100%;
+	border:1px solid rgb(221,221,221);
+	padding:2px;
+	background:rgb(249,249,249);
+	margin-top:15px;
+	cursor:pointer;
+}
+.expandBelow:first-child {
+	margin-top:0;
+}
+.expandBelow span {
+	vertical-align:middle;
+	margin:0 10px 0 5px;
+}
+.expander {
+	border:1px solid rgb(221,221,221);
+	border-top:0;
+	background:rgb(252,252,252);
+	padding:10px;
+	display:none;
+}
+.expander textarea {
+	height:100px;
+}
+.changesExpander {
+	max-height:250px;
+	overflow-y:auto;
+}

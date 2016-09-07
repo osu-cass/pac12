@@ -1,0 +1,12 @@
+.colwrapper {
+  width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 20px; }
+  .colwrapper .challenge {
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto; }
+    .colwrapper .challenge div {
+      padding: 20px; }
+    .colwrapper .challenge:last-child .section-divider {
+      display: none; }

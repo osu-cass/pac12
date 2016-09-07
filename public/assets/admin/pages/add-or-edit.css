@@ -1,0 +1,12 @@
+textarea {
+	resize:vertical;
+	width:100%;
+}
+
+#js, #css {
+	display:none;
+}
+
+.module {
+	padding-top:10px;
+}
