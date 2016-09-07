@@ -14,10 +14,10 @@ Requires [PHP](https://php.net), [Composer](https://getcomposer.org/),
    `vagrant box add laravel/homestead`
 3. Generate `Homestead.yaml` (`php vendor/bin/homestead make` on Mac/Linux,
    `vendor\\bin\\homestead make` on Windows)
-4. Edit your `hosts` file (`/etc/hosts` on Mac/Linux,
-   `C:\Windows\System32\drivers\etc\hosts` on Windows) and add the line
-   `192.168.10.10 homestead.app`
+4. Edit `.env` and set `APP_KEY` to a value that's 32 bytes long (since this
+   is for development only, it could be any 32 ASCII characters). For useful
+   debugging info when something goes wrong, also set `APP_DEBUG` to `true`
 5. Run `vagrant up` to start the Vagrant box
 
 You can now access the app via SSH with `vagrant ssh` or in a web browser at
-the address `http://homestead.app`
+the address `http://localhost:8000/`.
