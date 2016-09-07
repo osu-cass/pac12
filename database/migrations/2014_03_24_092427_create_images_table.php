@@ -18,7 +18,7 @@ class CreateImagesTable extends Migration {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('challenge_id')->references('id')->on('challenges')->onDelete('cascade');

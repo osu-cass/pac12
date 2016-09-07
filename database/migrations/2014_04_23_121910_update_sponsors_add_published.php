@@ -15,8 +15,8 @@ class UpdateSponsorsAddPublished extends Migration {
         Schema::table('sponsors', function($table) {
             $table->boolean('published')->default(1);
             $table->boolean('published_range')->default(0);
-            $table->timestamp('published_start');
-            $table->timestamp('published_end');
+            $table->timestamp('published_start')->nullable();
+            $table->timestamp('published_end')->nullable();
         });
     }
 

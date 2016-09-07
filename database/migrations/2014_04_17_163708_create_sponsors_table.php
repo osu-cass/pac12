@@ -20,7 +20,7 @@ class CreateSponsorsTable extends Migration {
             $table->string('banner');
             $table->string('video')->nullable();
             $table->text('description')->nullable();
-            $table->timestamps(); // Adds `created_at` and `updated_at` columns
+            $table->nullableTimestamps(); // Adds `created_at` and `updated_at` columns
             $table->softDeletes(); // Adds `deleted_at` column
         });
     }

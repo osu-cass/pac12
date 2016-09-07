@@ -18,7 +18,7 @@ class ChallengeTotals extends Migration {
             $table->integer('school_id')->unsigned();
             $table->integer('challenge_id')->unsigned();
             $table->integer('times')->unsigned();
-            
+
             $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
             $table->foreign('challenge_id')->references('id')->on('challenges')->onDelete('cascade');
         });

@@ -17,7 +17,7 @@ class CreateMenusTable extends Migration {
             $table->increments('id');
             $table->integer('language_id')->unsigned()->default(1);
             $table->string('name');
-            $table->timestamps(); // Adds `created_at` and `updated_at` columns
+            $table->nullableTimestamps(); // Adds `created_at` and `updated_at` columns
             $table->softDeletes(); // Adds `deleted_at` column
 
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');

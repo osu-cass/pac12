@@ -21,7 +21,7 @@ class CreateBadgesTable extends Migration {
             $table->string('category');
             $table->integer('minutes');
             $table->text('description');
-            $table->timestamps(); // Adds `created_at` and `updated_at` columns
+            $table->nullableTimestamps(); // Adds `created_at` and `updated_at` columns
         });
     }
 

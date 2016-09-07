@@ -17,7 +17,7 @@ class CreateLanguagesTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('uri');
-            $table->timestamps(); // Adds `created_at` and `updated_at` columns
+            $table->nullableTimestamps(); // Adds `created_at` and `updated_at` columns
         });
 
         DB::table('languages')->insert(

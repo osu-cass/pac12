@@ -19,7 +19,7 @@ class CreateMenusItemsTable extends Migration {
             $table->integer('menu_id')->unsigned();
             $table->string('fmodel');
             $table->integer('fid')->unsigned();
-            $table->timestamps(); // Adds `created_at` and `updated_at` columns
+            $table->nullableTimestamps(); // Adds `created_at` and `updated_at` columns
             $table->softDeletes(); // Adds `deleted_at` column
 
             $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');

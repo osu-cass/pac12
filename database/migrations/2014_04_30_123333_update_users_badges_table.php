@@ -13,7 +13,7 @@ class UpdateUsersBadgesTable extends Migration {
     public function up()
     {
         Schema::table('users_badges', function($table) {
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

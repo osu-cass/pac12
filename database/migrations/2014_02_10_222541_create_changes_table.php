@@ -19,7 +19,7 @@ class CreateChangesTable extends Migration {
             $table->string('fmodel');
             $table->integer('fid')->unsigned();
             $table->text('changes');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
         });
