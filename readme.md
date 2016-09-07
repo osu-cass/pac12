@@ -1,27 +1,23 @@
-# Laravel PHP Framework
+# PAC 12 Challenge Website
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Official repository for the PAC 12 Challenge
+[website](https://pac12challenge.org/) using the
+[Laravel](https://laravel.com/) PHP framework
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Setting up a Development Environment
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Requires [PHP](https://php.net), [Composer](https://getcomposer.org/),
+[Vagrant](https://www.vagrantup.com/), and [Virtualbox](https://virtualbox.org)
 
-## Official Documentation
+1. Install dependencies with Composer using the command `composer install`
+2. Install the Laravel Homestead Vagrant box using the command
+   `vagrant box add laravel/homestead`
+3. Generate `Homestead.yaml` (`php vendor/bin/homestead make` on Mac/Linux,
+   `vendor\\bin\\homestead make` on Windows)
+4. Edit your `hosts` file (`/etc/hosts` on Mac/Linux,
+   `C:\Windows\System32\drivers\etc\hosts` on Windows) and add the line
+   `192.168.10.10 homestead.app`
+5. Run `vagrant up` to start the Vagrant box
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+You can now access the app via SSH with `vagrant ssh` or in a web browser at
+the address `http://homestead.app`
