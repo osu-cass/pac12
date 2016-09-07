@@ -1,0 +1,36 @@
+.row {
+	.form-select {
+		padding: 5px;
+	}
+	#type {
+		margin-bottom: 2%;
+	}
+	#activityTypes {
+		select {
+			display: none;
+		}
+	}
+	.weightField, .cardioField {
+		display: none;
+	}
+}
+
+/******************
+	CHARTS
+*******************/
+#chart {
+	padding-bottom: 10px;
+	margin-bottom: 40px;
+	height:260px;
+	h1 {
+		display:none;
+	}
+	.jqplot-xaxis-tick {
+		font-size: 12px;
+	}
+	.jqplot-xaxis-tick,
+	.jqplot-point-label
+	{
+		color: #fff !important;
+	}
+}

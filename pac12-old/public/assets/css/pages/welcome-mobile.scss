@@ -1,0 +1,203 @@
+#bigLink {
+	display:none;
+}
+
+p {
+	margin:0;
+}
+
+.rule {
+	background:url('../../images/mobile-rule.png');
+	width:542px; height:10px;
+	margin:20px auto;
+}
+
+#header {
+	text-align:left;
+	overflow:auto;
+	padding:0 80px 30px;
+}
+#header h1 {
+	margin-bottom:22px;
+}
+
+.section {
+	margin:0 auto;
+	background-repeat:no-repeat;
+}
+.section h1 {
+	margin-bottom:22px;
+}
+
+/******************
+	CHARTS
+*******************/
+.section.chart, .section.chart2 {
+	.jqplot-point-label {
+		color:#FFF;
+	}
+}
+.section.chart {
+	#chartHalf, #chartHalf2 {
+		margin:0 auto;
+		width:500px;
+		height:260px;
+	}
+	#studentsTotals, #studentsTotals2 {
+		width:490px;
+		text-align:center;
+		overflow:hidden;
+		margin:0 auto 3px;
+	}
+	#studentsTotals div, #studentsTotals2 div {
+		float:left;
+		width:16.66666%;
+	}
+	#chartLabels, #chartLabels2 {
+		margin:0 auto;
+		width:470px;
+		height:63px;
+	}
+	#chartLabels {
+		background:url('../../images/graph-labels.png');
+	}
+	#chartLabels2 {
+		background:url('../../images/graph-labels.png') -490px 0;
+	}
+	h1 {
+		display:none;
+	}
+	&.cripple {
+		padding-top:20px;
+		min-height:100px;
+		#chartHalf, #chartHalf2 {
+			display:none;
+		}
+		h1 {
+			display:block;
+		}
+	}
+}
+.section.chart2 {
+	padding:0 40px;
+	min-height:340px;
+
+	.duelChart {
+		height:260px;
+	}
+
+	.miniIcon {
+		display:inline-block;
+		width:51px; height:50px;
+		background:url('../../images/graph-labels-small.png');
+		&:first-child {
+			margin-right:15px;
+		}
+		&.icon2 {background-position:-65px 0;}
+		&.icon3 {background-position:-131px 0;}
+		&.icon4 {background-position:-197px 0;}
+		&.icon5 {background-position:-262px 0;}
+		&.icon6 {background-position:-328px 0;}
+		&.icon7 {background-position:-393px 0;}
+		&.icon8 {background-position:-459px 0;}
+		&.icon9 {background-position:-525px 0;}
+		&.icon10 {background-position:-590px 0;}
+		&.icon11 {background-position:-656px 0;}
+		&.icon12 {background-position:-722px 0;}
+	}
+}
+
+.section.apps {
+	div {
+		width:569px; height:397px;
+		margin:0 auto;
+		background:url('../../images/section-apps-mobile.png');
+		a {
+			position:absolute;
+			&.apple, &.droid {
+				width:222px; height: 60px;
+			}
+			&.apple {
+				left:139px; top:146px;
+			}
+			&.droid {
+				left:139px; top:211px;
+			}
+			&.linkAccount {
+				width:220px; height:51px;
+				left:313px; top:304px;
+				background:url('../../images/link-account.png');
+			}
+			&.linkAccount:hover {
+				background-position:bottom;
+			}
+		}
+	}
+}
+.section.s3 {
+	text-align:center;
+	padding-top:0;
+}
+.section.s3 p {
+	margin-top:10px;
+	color:#00bbf1;
+	font-style:italic;
+}
+
+.section.s5 {
+	padding:0 80px;
+}
+
+.section.s6 {
+	padding:0 80px;
+}
+
+.section.s7 {
+	text-align:center;
+}
+
+#icons {
+	text-align:center;
+}
+.icon {
+	display:inline-block;
+	width:80px; height:80px;
+	background:url(../../images/school-buttons.png);
+}
+.icon.icon1 {background-position:0 -80px;}
+.icon.icon1:hover {background-position:0 0;}
+.icon.icon2 {background-position:-80px -80px;}
+.icon.icon2:hover {background-position:-80px 0;}
+.icon.icon3 {background-position:-160px -80px;}
+.icon.icon3:hover {background-position:-160px 0;}
+.icon.icon4 {background-position:-240px -80px;}
+.icon.icon4:hover {background-position:-240px 0;}
+.icon.icon5 {background-position:-320px -80px;}
+.icon.icon5:hover {background-position:-320px 0;}
+.icon.icon6 {background-position:-400px -80px;}
+.icon.icon6:hover {background-position:-400px 0;}
+.icon.icon7 {background-position:-480px -80px;}
+.icon.icon7:hover {background-position:-480px 0;}
+.icon.icon8 {background-position:-560px -80px;}
+.icon.icon8:hover {background-position:-560px 0;}
+.icon.icon9 {background-position:-640px -80px;}
+.icon.icon9:hover {background-position:-640px 0;}
+.icon.icon10 {background-position:-720px -80px;}
+.icon.icon10:hover {background-position:-720px 0;}
+.icon.icon11 {background-position:-800px -80px;}
+.icon.icon11:hover {background-position:-800px 0;}
+.icon.icon12 {background-position:-880px -80px;}
+.icon.icon12:hover {background-position:-880px 0;}
+
+.anchorsAway {
+	font-size:1.4em;
+	color: #FFF;
+	text-decoration:underline;
+}
+
+#footer {
+	text-align:center;
+	padding:40px 0;
+	color:#6a6b6c;
+	font-size:0.8em;
+}

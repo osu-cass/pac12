@@ -1,0 +1,7 @@
+.fb-signup-margin {
+  margin-top: 260px; }
+
+@media (max-width: 991px) {
+  .fb-signup-margin {
+    margin-top: 0;
+    margin-bottom: 20px; } }

@@ -1,0 +1,12 @@
+.handle {
+	cursor:ns-resize;
+}
+
+.addLinkWrap {
+	display:none;
+}
+.pageDropWrap {
+	margin:0 10px;
+	width:250px;
+	display:inline-block;
+}

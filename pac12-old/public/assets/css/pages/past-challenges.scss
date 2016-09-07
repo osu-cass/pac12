@@ -1,0 +1,19 @@
+.colwrapper {
+	width: 1000px;
+	margin: 0 auto;
+	.challenge {
+		//border-bottom: 1px solid #333;
+		overflow: hidden;
+		max-width: 1000px;
+		margin: 0 auto;
+		div {
+			padding: 20px;
+		}
+		&:last-child {
+			.section-divider {
+				display: none;
+			}
+		}
+	}
+	padding-bottom: 20px;
+}
