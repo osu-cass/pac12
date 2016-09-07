@@ -15,7 +15,7 @@ class AdminLanguageController extends AdminBaseController {
         $this->data['languages'] = $paginator->getCollection();
         $appends = $_GET;
         unset($appends['page']);
-        $this->data['links'] = $paginator->appends($appends)->links();
+        $this->data['links'] = $paginator->appends($appends)->render();
 
         return View::make('admin.languages.index', $this->data);
     }
