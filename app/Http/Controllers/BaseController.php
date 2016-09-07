@@ -13,14 +13,14 @@ class BaseController extends Controller {
 
     function __construct()
     {
-        $detect = new Mobile_Detect;
-        if (($detect->isMobile() || Input::get('mobile')) && !Input::get('desktop')) {
-            $this->mobile = true;
-            $this->data['mobile'] = true;
-        }
-
         // Access to the session object in constructors was deprecated in Laravel 5.3
         $this->middleware(function ($request, $next) {
+            $detect = new Mobile_Detect;
+            if (($detect->isMobile() || $request->input('mobile')) && !$request->input('desktop')) {
+                $this->mobile = true;
+                $this->data['mobile'] = true;
+            }
+
             // Used for alerting the user
             if (Session::has('errors')) {
                 foreach(Session::get('errors')->all() as $message) {
