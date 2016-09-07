@@ -14,10 +14,10 @@ class AddColumnsToTimes extends Migration {
     {
         Schema::table('times', function($table) {
             $table->integer('workout_id')->unsigned()->unique()->nullable();
-            $table->int('reps');
-            $table->int('weight');
-            $table->int('calories');
-            $table->int('distance');
+            $table->integer('reps');
+            $table->integer('weight');
+            $table->integer('calories');
+            $table->integer('distance');
         });
     }
 

@@ -20,12 +20,12 @@ class CreateLanguagesTable extends Migration {
             $table->nullableTimestamps(); // Adds `created_at` and `updated_at` columns
         });
 
-        DB::table('languages')->insert(
-            array(
-                'uri'   => 'en',
-                'name'  => 'English'
-            )
-        );
+//        DB::table('languages')->insert(
+//            array(
+//                'uri'   => 'en',
+//                'name'  => 'English'
+//            )
+//        );
     }
 
     /**

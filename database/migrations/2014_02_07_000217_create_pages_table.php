@@ -39,17 +39,17 @@ class CreatePagesTable extends Migration {
         });
 
         // Create the home page
-        DB::table('pages')->insert(
-            array(
-                'url'   => 'home',
-                'name'  => 'Home',
-                'title' => 'Home',
-                'html'  => '
-                    <h1>Welcome!</h1>
-                    <p>This is the default home page.</p>
-                '
-            )
-        );
+//        DB::table('pages')->insert(
+//            array(
+//                'url'   => 'home',
+//                'name'  => 'Home',
+//                'title' => 'Home',
+//                'html'  => '
+//                    <h1>Welcome!</h1>
+//                    <p>This is the default home page.</p>
+//                '
+//            )
+//        );
     }
 
     /**

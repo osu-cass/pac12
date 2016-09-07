@@ -19,10 +19,10 @@ class CreateTimesTable extends Migration {
             $table->date('date');
             $table->string('activity');
             $table->integer('minutes');
-            $table->integer('calories');
-            $table->integer('distance');
-            $table->integer('weight');
-            $table->integer('reps');
+//            $table->integer('calories');
+//            $table->integer('distance');
+//            $table->integer('weight');
+//            $table->integer('reps');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
