@@ -57,14 +57,14 @@ class UserController extends BaseController {
     }
 
     public function attempt_signup_fb()
-    {   
+    {
         $facebook = new Facebook(Config::get('facebook'));
 
         $uid = $facebook->getUser();
         if ($uid == 0) {
             return Redirect::to('/signup')->withErrors('There was an error');
         }
-     
+
         $me = $facebook->api('/me');
         $inputs = array('email' => $me['email']);
         $rules = array('email'  => 'unique:users');
@@ -438,7 +438,7 @@ class UserController extends BaseController {
     }
 
     public function workouts()
-    {   
+    {
         for ($i = 6; $i >= 0; $i--) {
             $date = Carbon::now()->subDays($i);
 

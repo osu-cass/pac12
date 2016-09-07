@@ -19,20 +19,25 @@ class BaseController extends Controller {
             $this->data['mobile'] = true;
         }
 
-        // Used for alerting the user
-        if (Session::has('errors')) {
-            foreach(Session::get('errors')->all() as $message) {
-                $this->data['error'][] = $message;
+        // Access to the session object in constructors was deprecated in Laravel 5.3
+        $this->middleware(function ($request, $next) {
+            // Used for alerting the user
+            if (Session::has('errors')) {
+                foreach(Session::get('errors')->all() as $message) {
+                    $this->data['error'][] = $message;
+                }
             }
-        }
-        if (Session::has('success')) {
-            $this->data['success'][] = Session::get('success');
-        }
+            if (Session::has('success')) {
+                $this->data['success'][] = Session::get('success');
+            }
 
-        /*if (Auth::check()) {
-            $this->preva = new Preva;
-            $this->preva->token = Auth::user()->token;
-        }*/
+            /*if (Auth::check()) {
+                $this->preva = new Preva;
+                $this->preva->token = Auth::user()->token;
+            }*/
+
+            return $next($request);
+        });
     }
 
     /**

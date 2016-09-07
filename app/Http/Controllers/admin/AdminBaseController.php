@@ -8,41 +8,46 @@ class AdminBaseController extends BaseController {
     {
         parent::__construct();
 
-        ///////////////////////////////////////////////
-        //                Languages                  //
-        ///////////////////////////////////////////////
-        $this->languages = Language::all();
-        $language_drop = array();
-        foreach ($this->languages as $language) {
-            $language_drop[$language->id] = $language->name;
-        }
-        $this->data['language_drop'] = $language_drop;
-        $this->data['all_languages'] = $this->languages;
-        $this->data['single_language'] = count($this->languages) == 1 ? true : false;
+        // Access to the session object in constructors was deprecated in Laravel 5.3
+        $this->middleware(function ($request, $next) {
+            ///////////////////////////////////////////////
+            //                Languages                  //
+            ///////////////////////////////////////////////
+            $this->languages = Language::all();
+            $language_drop = array();
+            foreach ($this->languages as $language) {
+                $language_drop[$language->id] = $language->name;
+            }
+            $this->data['language_drop'] = $language_drop;
+            $this->data['all_languages'] = $this->languages;
+            $this->data['single_language'] = count($this->languages) == 1 ? true : false;
 
-        // Handle the current active language
-        if (!Session::get('language')) {
-            Session::put('language', Language::primary()->id);
-        }
-        $this->data['active_language'] = $this->languages->find(Session::get('language'));
+            // Handle the current active language
+            if (!Session::get('language')) {
+                Session::put('language', Language::primary()->id);
+            }
+            $this->data['active_language'] = $this->languages->find(Session::get('language'));
 
-        ///////////////////////////////////////////////
-        //         Menu Link Creation Wizard         //
-        ///////////////////////////////////////////////
-        // Place menu linkable models here
-        $this->data['linkable_models'] = array(
-            'Page' => array(
-                'add' => URL::to('admin/pages/add')
-            )
-        );
+            ///////////////////////////////////////////////
+            //         Menu Link Creation Wizard         //
+            ///////////////////////////////////////////////
+            // Place menu linkable models here
+            $this->data['linkable_models'] = array(
+                'Page' => array(
+                    'add' => URL::to('admin/pages/add')
+                )
+            );
 
-        // Grab the menu we're currently working with when creating content
-        // from the menu link wizard
-        if (Session::has('menu_id')) {
-            $this->data['menu_id'] = Session::get('menu_id');
-        } else if (Input::old('menu_id')) {
-            $this->data['menu_id'] = Input::old('menu_id');
-        }
+            // Grab the menu we're currently working with when creating content
+            // from the menu link wizard
+            if (Session::has('menu_id')) {
+                $this->data['menu_id'] = Session::get('menu_id');
+            } else if (Input::old('menu_id')) {
+                $this->data['menu_id'] = Input::old('menu_id');
+            }
+
+            return $next($request);
+        });
     }
 
     /**
