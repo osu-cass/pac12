@@ -145,7 +145,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
     @include('alerts')
     <h1>PAC-12 RECREATION CHALLENGE</h1>
     <div class="text">
-        {{ $page->html }}
+        {!! $page->html !!}
         <p>
             <a href="{{ URL::to('account') }}" class="btn btn-primary">Register/Sign-in</a>
         </p>

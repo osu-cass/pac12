@@ -3,13 +3,13 @@
 @section('title', $page->title)
 
 @section('meta')
-    {{ $page->meta_html() }}
+    {!! $page->meta_html() !!}
 @stop
 
 @section('css')
     @if ($page->css)
         <style>
-            {{ $page->css }}
+            {!! $page->css !!}
         </style>
     @endif
 @stop
@@ -17,7 +17,7 @@
 @section('js')
     @if ($page->js)
         <script>
-            {{ $page->js }}
+            {!! $page->js !!}
         </script>
     @endif
 @stop
@@ -27,7 +27,7 @@
 @stop
 
 @section('content')
-    {{ $page->html }}
+    {!! $page->html !!}
 @stop
 
 @section('footer')

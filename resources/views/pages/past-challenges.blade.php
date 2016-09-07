@@ -18,7 +18,7 @@
 <div class="colwrapper">
     <div class="row">
         <div class="col-sm-12">
-            {{ $page->html }}
+            {!! $page->html !!}
         </div>
     </div>
 </div>

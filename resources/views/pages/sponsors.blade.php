@@ -15,7 +15,7 @@
 
 @section('content')
     <div class="colwrapper sponsors">
-        {{ $page->html }}
+        {!! $page->html !!}
         <ul class="list-sponsors">
         @foreach (Sponsor::all() as $sponsor)
             @if($sponsor->is_published())
