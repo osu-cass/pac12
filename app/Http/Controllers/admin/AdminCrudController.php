@@ -39,7 +39,7 @@ class AdminCrudController extends AdminBaseController {
                 foreach ($terms as $term) {
                     $term = '%'.$term.'%';
                     foreach ($searchable as $column) {
-                        $query->orWhere($column, 'like', $term);
+                        $query->where($column, 'like', $term);
                     }
                 }
             });

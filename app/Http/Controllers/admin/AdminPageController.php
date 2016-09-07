@@ -20,7 +20,7 @@ class AdminPageController extends AdminBaseController {
             $paginator = $paginator->where(function($query) use ($terms) {
                 foreach ($terms as $term) {
                     $term = '%'.$term.'%';
-                    $query->orWhere('url', 'like', $term)
+                    $query->where('url', 'like', $term)
                           ->orWhere('title', 'like', $term)
                           ->orWhere('html', 'like', $term);
                 }

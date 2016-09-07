@@ -24,7 +24,7 @@ class AdminUserController extends AdminBaseController {
             $paginator = $paginator->where(function($query) use ($terms) {
                 foreach ($terms as $term) {
                     $term = '%'.$term.'%';
-                    $query->orWhere('email', 'like', $term)
+                    $query->where('email', 'like', $term)
                         ->orWhere('username', 'like', $term)
                         ->orWhere('school', 'like', $term);
                 }
