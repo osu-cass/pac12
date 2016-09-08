@@ -2,6 +2,12 @@
 
 class School extends Eloquent {
 
+    public static function schools() {
+        return School::all()->map(function ($school) {
+            return $school->name;
+        });
+    }
+
     public static function reports() {
         return array(
             'University of Arizona' => array(

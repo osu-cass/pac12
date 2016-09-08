@@ -80,7 +80,6 @@ class UserController extends BaseController {
     {
         $emailData = array(
             'user' => $user,
-            'page' => Page::find(5)
         );
         Mail::send('emails.new-user', $emailData, function($message) use ($user) {
             $message->to($user->email)

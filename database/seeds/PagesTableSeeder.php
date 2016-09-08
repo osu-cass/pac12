@@ -11,6 +11,7 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
+        // Default homepage
         Page::create(array(
             'url'   => 'home',
             'name'  => 'Home',
@@ -21,6 +22,7 @@ class PagesTableSeeder extends Seeder
             '
         ));
 
+        // Front page
         Page::create(array(
             'name' => 'Welcome',
             'url' => 'welcome',
@@ -31,4 +33,5 @@ class PagesTableSeeder extends Seeder
             '
         ));
     }
+
 }
