@@ -28,12 +28,13 @@
                 <input type="submit" class="btn btn-success" value="Submit" />
                 <?php
                     $facebook = new \Facebook\Facebook(Config::get('facebook'));
+                    $helper = $facebook->getRedirectLoginHelper();
                     $params = array(
                         'scope' => 'email',
                         'redirect_uri' => URL::to('/signin-fb')
                     );
                 ?>
-                <a class="btn btn-primary fb-signin" href="{{$facebook->getLoginUrl($params)}}">FB Login</a>
+                <a class="btn btn-primary fb-signin" href="{{$helper->getLoginUrl($params)}}">FB Login</a>
             </p>
             {{ Form::close() }}
         </div>

@@ -50,13 +50,13 @@
         <div class="col-xs-10 col-xs-offset-1 col-md-2 fb-signup-margin text-center">
             <?php
                 $facebook = new Facebook(Config::get('facebook'));
-    
+                $helper = $facebook->getRedirectLoginHelper();
                 $login_params = array(
                     'scope' => 'email',
                     'redirect_uri' => URL::to('/signup-fb')
                 );
             ?>
-            <a class="btn btn-primary" href="{{$facebook->getLoginUrl($login_params)}}">Facebook Signup</a>
+            <a class="btn btn-primary" href="{{$helper->getLoginUrl($login_params)}}">Facebook Signup</a>
         </div>
     </div>
 @stop

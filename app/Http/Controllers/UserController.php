@@ -1,6 +1,75 @@
 <?php
 
+use Facebook\Facebook;
+use Facebook\Exceptions\FacebookResponseException;
+use Facebook\Exceptions\FacebookSDKException;
+
 class UserController extends BaseController {
+
+    private function attempt_get_fb_user(array $fields = array())
+    {
+        $config = Config::get('facebook');
+        $fb = new Facebook($config);
+        $helper = $fb->getRedirectLoginHelper();
+
+        // Try to get the access token
+        try {
+            $accessToken = $helper->getAccessToken();
+        } catch (FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            return null;
+        } catch (FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            return null;
+        }
+
+        // If no token was returned
+        if (!isset($accessToken)) {
+            if ($helper->getError()) {
+                header('HTTP/1.0 401 Unauthorized');
+                echo "Error: " . $helper->getError() . "\n";
+                echo "Error Code: " . $helper->getErrorCode() . "\n";
+                echo "Error Reason: " . $helper->getErrorReason() . "\n";
+                echo "Error Description: " . $helper->getErrorDescription() . "\n";
+            } else {
+                header('HTTP/1.0 400 Bad Request');
+                echo 'Bad request';
+            }
+
+            return null;
+        }
+
+        // Get token metadata and validate it
+        $oAuth2Client = $fb->getOAuth2Client();
+        $tokenMetadata = $oAuth2Client->debugToken($accessToken);
+        try {
+            $tokenMetadata->validateAppId($config['app_id']);
+            $tokenMetadata->validateExpiration();
+        } catch (FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            return null;
+        }
+
+        // Assemble the fields query string (If empty, grab all default fields)
+        if (count($fields) == 0) {
+            $fields_query = '';
+        } else {
+            $fields_query = '?fields=' . implode(',', $fields);
+        }
+
+        // Attempt to retrieve the user profile
+        try {
+            $response = $fb->get('/me' . $fields_query, $accessToken);
+        } catch (FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            return null;
+        } catch (FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            return null;
+        }
+
+        return $response->getGraphUser();
+    }
 
     public function signup()
     {
@@ -58,27 +127,28 @@ class UserController extends BaseController {
 
     public function attempt_signup_fb()
     {
-        $facebook = new Facebook(Config::get('facebook'));
+        $fb_user = $this->attempt_get_fb_user(array('email', 'id', 'name'));
 
-        $uid = $facebook->getUser();
-        if ($uid == 0) {
+        if (!$fb_user) {
             return Redirect::to('/signup')->withErrors('There was an error');
         }
 
-        $me = $facebook->api('/me');
-        $inputs = array('email' => $me['email']);
+        $inputs = array('email' => $fb_user['email']);
         $rules = array('email'  => 'unique:users');
         $validator = Validator::make($inputs, $rules);
         if ($validator->fails()) {
             return Redirect::to('signup')->withInput()->withErrors($validator);
         }
 
+        $uid = intval($fb_user->getField('id'));
+        $email = $fb_user->getField('email');
+
         $profile = Profile::whereUid($uid)->first();
         if (empty($profile)) {
             $user           = new User;
             $user->school   = Input::get('school');
             //$user->name   = $me['first_name'].' '.$me['last_name'];
-            $user->email    = $me['email'];
+            $user->email    = $email;
             $user->joined   = Carbon::now()->toDateString();
             //$user->photo  = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
             $user->save();
@@ -86,7 +156,7 @@ class UserController extends BaseController {
 
             $profile            = new Profile();
             $profile->uid       = $uid;
-            $profile->username  = $me['username'];
+            $profile->username  = $fb_user['username'];
             $profile            = $user->profiles()->save($profile);
         }
         $profile->access_token = $facebook->getAccessToken();
