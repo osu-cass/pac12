@@ -12,7 +12,7 @@ class ChallengeTotals extends Migration {
      */
     public function up()
     {
-        Schema::create('challenge_totals', function($table) {
+        Schema::create('totals', function($table) {
 
             $table->increments('id');
             $table->integer('school_id')->unsigned();
@@ -31,7 +31,7 @@ class ChallengeTotals extends Migration {
      */
     public function down()
     {
-        Schema::drop('challenge_totals');
+        Schema::drop('totals');
     }
 
 }

@@ -233,7 +233,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
 @endif
 <div class="section s3">
     <img src="{{ asset('assets/images/section-3.png') }}" alt="" class="section-divider">
-    {{ $page->get_module_by_number(1) }}
+    {!! $page->get_module_by_number(1) !!}
     <div class="icons">
         @foreach($schools as $school)
             <a class="icon icon{{ $school->id }}" href="{{ $school->url }}" target="_blank"></a>
@@ -259,12 +259,12 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
     <div class="row">
         <div class="col-sm-6 col-xs-12">
             <div class="area">
-                {{ $page->get_module_by_number(2) }}
+                {!! $page->get_module_by_number(2) !!}
             </div>
         </div>
         <div class="col-sm-6 col-xs-12">
             <div class="section-image">
-                {{ $page->get_module_by_number(3) }}
+                {!! $page->get_module_by_number(3) !!}
             </div>
         </div>
     </div>
@@ -274,12 +274,12 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
     <div class="row">
         <div class="col-sm-6 col-xs-12">
             <div class="section-image">
-                {{ $page->get_module_by_number(4) }}
+                {!! $page->get_module_by_number(4) !!}
             </div>
         </div>
         <div class="col-sm-6 col-xs-12">
             <div class="area">
-                {{ $page->get_module_by_number(5) }}
+                {!! $page->get_module_by_number(5) !!}
                 <a class="btn btn-primary" href="/past-challenges">View Previous Champions</a>
             </div>
         </div>

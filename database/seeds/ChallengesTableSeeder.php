@@ -11,6 +11,9 @@ class ChallengesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Challenge::create(array(
+            'name' => 'Example Challenge',
+            'description' => 'An example challenge',
+        ));
     }
 }

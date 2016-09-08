@@ -11,6 +11,10 @@ class SchoolsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        foreach (School::schools() as $school => $_) {
+            School::create(array(
+                'name' => $school,
+            ));
+        }
     }
 }

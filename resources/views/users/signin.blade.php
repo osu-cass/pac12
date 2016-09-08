@@ -27,7 +27,7 @@
             <p class="text-left">
                 <input type="submit" class="btn btn-success" value="Submit" />
                 <?php
-                    $facebook = new \Facebook\Facebook(Config::get('facebook'));
+                    $facebook = new Facebook(Config::get('facebook'));
                     $helper = $facebook->getRedirectLoginHelper();
                     $params = array(
                         'scope' => 'email',

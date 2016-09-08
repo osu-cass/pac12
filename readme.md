@@ -18,6 +18,9 @@ Requires [PHP](https://php.net), [Composer](https://getcomposer.org/),
    is for development only, it could be any 32 ASCII characters). For useful
    debugging info when something goes wrong, also set `APP_DEBUG` to `true`
 5. Run `vagrant up` to start the Vagrant box
+6. In order to build and seed the database, type `vagrant ssh` to SSH into the
+   Vagrant box, then `cd pac12` and `php artisan migrate:refresh --seed` to
+   run the database migrations and seed the database
 
-You can now access the app via SSH with `vagrant ssh` or in a web browser at
-the address `http://localhost:8000/`.
+You can now access the app in a web browser at the address
+`http://localhost:8000/`.
