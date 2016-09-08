@@ -4,7 +4,7 @@
 
 @section('css')
     {{ HTML::style('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css') }}
-    {{ HTML::style('assets/css/pages/account.css?v=' . VERSION) }}
+    {{ HTML::style('assets/css/pages/account.css') }}
 @stop
 
 @section('js')

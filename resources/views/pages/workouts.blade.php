@@ -4,7 +4,7 @@
 
 @section('css')
     {{ HTML::style('assets/jqplot/jquery.jqplot.min.css') }}
-    {{ HTML::style('assets/css/pages/account.css?v=' . VERSION) }}
+    {{ HTML::style('assets/css/pages/account.css') }}
 @stop
 
 @section('js')

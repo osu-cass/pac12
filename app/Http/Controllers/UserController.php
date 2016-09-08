@@ -110,8 +110,8 @@ class UserController extends BaseController {
         Auth::login($user);
 
         return Redirect::to('log')->with('success', '
-            <p>Your account has been created!</p>
-            <p>You have been signed in.</p>
+            Your account has been created!
+            You have been signed in.
         ');
     }
 
@@ -164,8 +164,8 @@ class UserController extends BaseController {
         Auth::login($user);
 
         return Redirect::to('/log')->with('success', '
-            <p>Your account has been created!</p>
-            <p>You have been signed in with Facebook.</p>');
+            Your account has been created!
+            You have been signed in with Facebook.');
     }
 
     public function signup_preva()
@@ -195,8 +195,8 @@ class UserController extends BaseController {
         $this->signup_email($user);
 
         return Redirect::to('log')->with('success', '
-            <p>Your Preva account has successfully been connected to '.$user->school.'!</p>
-            <p>You may log minutes through either your Preva account or here.</p>
+            Your Preva account has successfully been connected to '.$user->school.'!
+            You may log minutes through either your Preva account or here.
         ');
     }
 
@@ -243,7 +243,7 @@ class UserController extends BaseController {
             }
             else {
                 $signup = URL::to('/signup');
-                return Redirect::to('signin')->withInput()->withErrors('Current Facebook account is not linked with PAC12. <a href="'.$signup.'">Signup</a>');
+                return Redirect::to('signin')->withInput()->withErrors('Current Facebook account is not linked with PAC12.');
             }
         }
 
@@ -256,7 +256,7 @@ class UserController extends BaseController {
         Auth::logout();
 
         $facebook = new Facebook(Config::get('facebook'));
-        if($facebook->getUser()) {
+        if($this->attempt_get_fb_user()) {
             $params = array( 'next' => URL::to('/') );
             return Redirect::away($facebook->getLogoutUrl($params));
         }
@@ -562,7 +562,7 @@ class UserController extends BaseController {
         $user->save();
 
         return Redirect::to('account')->with('success', '
-            <p>Your account has been updated.</p>
+            Your account has been updated.
         ');
     }
 

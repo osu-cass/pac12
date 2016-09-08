@@ -3,7 +3,7 @@
 @section('title', 'Fitness Challenge')
 
 @section('css')
-{{ HTML::style('assets/css/pages/account.css?v=' . VERSION) }}
+{{ HTML::style('assets/css/pages/account.css') }}
 {{ HTML::style('assets/js/jquery/jquery.datetimepicker.css') }}
 @stop
 
