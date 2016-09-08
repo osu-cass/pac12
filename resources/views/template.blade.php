@@ -7,8 +7,8 @@
     <title>PAC12 | @yield('title')</title>
 
     {{ HTML::style('//netdna.bootstrapcdn.com/bootswatch/3.0.1/spacelab/bootstrap.min.css') }}
-    {{ HTML::style('assets/css/master.css?v=' . VERSION) }}
-    
+    {{ HTML::style('assets/css/master.css') }}
+
     @yield('css')
 </head>
 <body>

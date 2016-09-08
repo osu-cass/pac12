@@ -3,7 +3,7 @@
 @section('title', 'Sign In')
 
 @section('css')
-{{ HTML::style('assets/css/users/signin.css?v=' . VERSION) }}
+{{ HTML::style('assets/css/users/signin.css') }}
 @stop
 
 @section('header')
@@ -27,7 +27,7 @@
             <p class="text-left">
                 <input type="submit" class="btn btn-success" value="Submit" />
                 <?php
-                    $facebook = new Facebook(Config::get('facebook'));
+                    $facebook = new \Facebook\Facebook(Config::get('facebook'));
                     $params = array(
                         'scope' => 'email',
                         'redirect_uri' => URL::to('/signin-fb')

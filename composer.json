@@ -7,8 +7,9 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
+        "laravelcollective/html": "~5.0",
         "mobiledetect/mobiledetectlib": "2.8.22",
-        "facebook/graph-sdk": "5.3"
+        "facebook/graph-sdk": "5.3.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
