@@ -27,7 +27,7 @@ class AddChallengeIdToImagesTable extends Migration
     public function down()
     {
         Schema::table('images', function ($table) {
-            $table->dropColumn('challenge_id');
+            $table->dropForeign('images_challenge_id_foreign');
         });
     }
 }

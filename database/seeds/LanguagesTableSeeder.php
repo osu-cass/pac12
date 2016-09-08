@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 class LanguagesTableSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
@@ -11,6 +12,10 @@ class LanguagesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Language::create(array(
+            'uri'  => 'en',
+            'name' => 'English'
+        ));
     }
+
 }

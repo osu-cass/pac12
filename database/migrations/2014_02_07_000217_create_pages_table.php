@@ -37,19 +37,6 @@ class CreatePagesTable extends Migration {
 
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
         });
-
-        // Create the home page
-//        DB::table('pages')->insert(
-//            array(
-//                'url'   => 'home',
-//                'name'  => 'Home',
-//                'title' => 'Home',
-//                'html'  => '
-//                    <h1>Welcome!</h1>
-//                    <p>This is the default home page.</p>
-//                '
-//            )
-//        );
     }
 
     /**

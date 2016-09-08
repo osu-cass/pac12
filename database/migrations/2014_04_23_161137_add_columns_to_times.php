@@ -28,11 +28,13 @@ class AddColumnsToTimes extends Migration {
      */
     public function down()
     {
-        $table->dropColumn('workout_id');
-        $table->dropColumn('reps');
-        $table->dropColumn('weight');
-        $table->dropColumn('calories');
-        $table->dropColumn('distance');
+        Schema::table('times', function($table) {
+            $table->dropColumn('workout_id');
+            $table->dropColumn('reps');
+            $table->dropColumn('weight');
+            $table->dropColumn('calories');
+            $table->dropColumn('distance');
+        });
     }
 
 }
