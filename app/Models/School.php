@@ -2,29 +2,6 @@
 
 class School extends Eloquent {
 
-    public static function columns() {
-        return array(
-            'url'
-        );
-    }
-
-    public static function schools() {
-        return array(
-            'University of Arizona' => 'University of Arizona',
-            'Arizona State University' => 'Arizona State University',
-            'University of California, Berkeley' => 'University of California, Berkeley',
-            'University of Oregon' => 'University of Oregon',
-            'Oregon State University' => 'Oregon State University',
-            'Stanford University' => 'Stanford University',
-            'UCLA' => 'UCLA',
-            'University of Southern California' => 'University of Southern California',
-            'University of Washington' => 'University of Washington',
-            'Washington State University' => 'Washington State University',
-            'University of Colorado' => 'University of Colorado',
-            'University of Utah' => 'University of Utah'
-        );
-    }
-
     public static function reports() {
         return array(
             'University of Arizona' => array(
