@@ -7,7 +7,7 @@
     <title>Admin | @yield('title')</title>
 
     {{ HTML::style('//netdna.bootstrapcdn.com/bootswatch/3.0.1/spacelab/bootstrap.min.css') }}
-    {{ HTML::style('assets/admin/master.css?v=' . VERSION) }}
+    {{ HTML::style('assets/admin/master.css') }}
     @yield('css')
 </head>
 <body>
@@ -28,7 +28,7 @@
         base_url: '{{ URL::to('/') }}/'
     };
 </script>
-{{ HTML::script('assets/admin/master.js?v=' . VERSION) }}
+{{ HTML::script('assets/admin/master.js') }}
 @yield('js')
 </body>
 </html>
