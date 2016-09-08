@@ -7,12 +7,12 @@ class Image extends Eloquent {
     ///////////////////////////////////////////////
     public function user()
     {
-        return $this->belongsTo('User')->withTrashed();
+        return $this->belongsTo('User');
     }
 
     public function challenge()
     {
-        return $this->belongsTo('Challenge')->withTrashed();
+        return $this->belongsTo('Challenge');
     }
 
     ///////////////////////////////////////////////

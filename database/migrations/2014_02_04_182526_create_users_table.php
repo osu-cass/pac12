@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration {
             $table->string('fitness_activity');
 
             $table->nullableTimestamps(); // Adds `created_at` and `updated_at` columns
+            $table->softDeletes(); // Adds `deleted_at` for SoftDeletes trait on User model
 
             $table->unique('email');
         });

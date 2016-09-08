@@ -3,7 +3,7 @@
 @section('title', 'Menus')
 
 @section('css')
-    {{ HTML::style('assets/admin/menus/index.css?v=' . VERSION) }}
+    {{ HTML::style('assets/admin/menus/index.css') }}
 @stop
 
 @section('js')
@@ -11,7 +11,7 @@
     <script>
         var linkable_models = {{ json_encode($linkable_models) }};
     </script>
-    {{ HTML::script('assets/admin/menus/index.js?v=' . VERSION) }}
+    {{ HTML::script('assets/admin/menus/index.js') }}
 @stop
 
 @section('content')

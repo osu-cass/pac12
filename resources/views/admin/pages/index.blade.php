@@ -3,7 +3,7 @@
 @section('title', 'Pages')
 
 @section('js')
-    {{ HTML::script('assets/admin/pages/index.js?v=' . VERSION) }}
+    {{ HTML::script('assets/admin/pages/index.js') }}
 @stop
 
 @section('content')

@@ -37,7 +37,7 @@ class AdminChallengeController extends AdminCrudController {
         $model = $this->model;
 
         $search = Input::get('search') ? urldecode(Input::get('search')) : null;
-        $paginator = $model::withTrashed()->orderBy('published_start', 'desc');
+        $paginator = $model::orderBy('published_start', 'desc');
 
         if ($search) {
             $terms = explode(' ', $search);
@@ -89,7 +89,7 @@ class AdminChallengeController extends AdminCrudController {
             return Redirect::to('admin/' . $this->plural . '/edit/' . $id)->withInput()->withErrors($errors);
         }
 
-        $object = $model::withTrashed()->findOrFail($id);
+        $object = $model::all()->findOrFail($id);
         foreach ($model::columns() as $column) {
             $object->{$column} = isset($custom[$column]) ? $custom[$column] : Input::get($column);
         }

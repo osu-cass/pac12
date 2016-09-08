@@ -2,13 +2,14 @@
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
+Use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Eloquent implements AuthenticatableContract, CanResetPasswordContract {
 
-    use Authenticatable, CanResetPassword, Notifiable;
+    use Authenticatable, CanResetPassword, SoftDeletes, Notifiable;
 
     public $timestamps = false;
 

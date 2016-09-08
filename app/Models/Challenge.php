@@ -1,4 +1,5 @@
 <?php
+
 class Challenge extends Eloquent {
 
     public static function columns()

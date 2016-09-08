@@ -2,11 +2,20 @@
 
 class AdminCrudController extends AdminBaseController {
 
-    /*
     public $model = 'TeamMember';
     public $plural = 'members';
     public $singular = 'member';
-    */
+
+    private function get_all_model()
+    {
+        $model = $this->model;
+
+        if (in_array('SoftDeletes', class_uses($model))) {
+            return $model::withTrashed();
+        } else {
+            return $model::all();
+        }
+    }
 
     function __construct()
     {
@@ -16,8 +25,7 @@ class AdminCrudController extends AdminBaseController {
     public function index()
     {
         $model = $this->model;
-
-        $paginator = $model::withTrashed()->paginate();
+        $paginator = $model::paginate();
         $this->data[$this->plural] = $paginator->getCollection();
         $appends = $_GET;
         unset($appends['page']);
@@ -29,22 +37,21 @@ class AdminCrudController extends AdminBaseController {
     public function index_searchable($searchable = array())
     {
         $model = $this->model;
-
         $search = Input::get('search') ? urldecode(Input::get('search')) : null;
-        $paginator = $model::withTrashed();
 
         if ($search) {
             $terms = explode(' ', $search);
-            $paginator = $paginator->where(function($query) use ($terms, $searchable) {
+            $paginator = $model::where(function($query) use ($terms, $searchable) {
                 foreach ($terms as $term) {
                     $term = '%'.$term.'%';
                     foreach ($searchable as $column) {
                         $query->where($column, 'like', $term);
                     }
                 }
-            });
+            })->paginate();
+        } else {
+            $paginator = $model::paginate();
         }
-        $paginator = $paginator->paginate();
 
         $this->data[$this->plural] = $paginator->getCollection();
         $appends = $_GET;
@@ -83,8 +90,7 @@ class AdminCrudController extends AdminBaseController {
     public function edit($id)
     {
         $model = $this->model;
-
-        $object = $model::withTrashed()->findOrFail($id);
+        $object = $model::findOrFail($id);
         $this->data[$this->singular] = $object;
         $this->data['action'] = 'edit';
 
@@ -100,7 +106,7 @@ class AdminCrudController extends AdminBaseController {
             return Redirect::to('admin/' . $this->plural . '/edit/' . $id)->withInput()->withErrors($errors);
         }
 
-        $object = $model::withTrashed()->findOrFail($id);
+        $object = $model::findOrFail($id);
         foreach ($model::columns() as $column) {
             $object->{$column} = isset($custom[$column]) ? $custom[$column] : Input::get($column);
         }
@@ -121,21 +127,21 @@ class AdminCrudController extends AdminBaseController {
      * @param int $id - (Optional) ID of member beind edited
      * @return array - An array of error messages to show why validation failed
      */
-    public function validate(&$custom, $id = null)
-    {
-        $errors = array();
-
-        $validator = Validator::make(Input::all(), $this->validate_rules($id));
-        if ($validator->fails()) {
-            foreach($validator->messages()->all() as $error) {
-                $errors[] = $error;
-            }
-        }
-
-        $custom = $this->validate_custom($errors);
-
-        return $errors;
-    }
+//    public function validate(&$custom, $id = null)
+//    {
+//        $errors = array();
+//
+//        $validator = Validator::make(Input::all(), $this->validate_rules($id));
+//        if ($validator->fails()) {
+//            foreach($validator->messages()->all() as $error) {
+//                $errors[] = $error;
+//            }
+//        }
+//
+//        $custom = $this->validate_custom($errors);
+//
+//        return $errors;
+//    }
     public function validate_rules($id = null)
     {
         return array();
@@ -165,22 +171,29 @@ class AdminCrudController extends AdminBaseController {
     {
         $model = $this->model;
 
-        $object = $model::withTrashed()->find($id);
-        if (method_exists($object, 'pre_restore')) {
-            $object->pre_restore();
-        }
-        $object->restore();
+        if (in_array('SoftDeletes', class_uses($model))) {
+            $object = $model::withTrashed()->find($id);
+            if (method_exists($object, 'pre_restore')) {
+                $object->pre_restore();
+            }
+            $object->restore();
 
-        return Redirect::to('admin/' . $this->plural)->with('success', '
-            <p>' . $model . ' successfully restored.</p>
-        ');
+            return Redirect::to('admin/' . $this->plural)->with('success', '
+                ' . $model . ' successfully restored.
+            ');
+        } else {
+            return Redirect::to('admin/' . $this->plural)->with('note', '
+                ' . $model . ' doesn\'t support soft deletion.
+            ');
+        }
+
     }
 
     public function hard_delete($id)
     {
         $model = $this->model;
 
-        $object = $model::withTrashed()->find($id);
+        $object = $this->get_all_model()->find($id);
         if (method_exists($object, 'pre_hard_delete')) {
             $object->pre_hard_delete();
         }
