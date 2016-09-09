@@ -1,7 +1,8 @@
-.DS_Store
-Thumbs.db
+/node_modules
+/public/storage
+/vendor
 /.idea
-*.DS_Store
-._*
-*.sass-cache*
-_ide_*
+Homestead.json
+Homestead.yaml
+.vagrant/
+.env
