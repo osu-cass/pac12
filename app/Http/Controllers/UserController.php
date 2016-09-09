@@ -439,7 +439,7 @@ class UserController extends BaseController {
         //Adding to school totals
         if ($currentDate >= $start && $currentDate <= $end) {
             $count = Time::where('school', '=', Auth::user()->school)->groupBy('user_id')->count();
-            $schoolTotal = Total::where('school', '=', Auth::user()->school)->first();
+            $schoolTotal = Total::where('school', '=', Auth::user()->school)->firstOrFail();
             $schoolTotal->minutes += $minutes;
             $schoolTotal->students = $count;
             $schoolTotal->save();
