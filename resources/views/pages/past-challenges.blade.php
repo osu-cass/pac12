@@ -3,8 +3,8 @@
 @section('title', 'Fitness Challenge')
 
 @section('css')
-{{ HTML::style('assets/css/pages/welcome.css?v=' . VERSION) }}
-{{ HTML::style('assets/css/pages/past-challenges.css?v=' . VERSION) }}
+{{ HTML::style('assets/css/pages/welcome.css') }}
+{{ HTML::style('assets/css/pages/past-challenges.css') }}
 @stop
 
 @section('js')
@@ -18,7 +18,7 @@
 <div class="colwrapper">
     <div class="row">
         <div class="col-sm-12">
-            {!! $page->html !!}
+            {!! Page::find(3)->html !!}
         </div>
     </div>
 </div>
