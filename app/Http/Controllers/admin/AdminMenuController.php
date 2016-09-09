@@ -51,7 +51,7 @@ class AdminMenuController extends AdminBaseController {
         $menu->save();
 
         return Redirect::to('admin/menus')->with('success', '
-            <p>Menu successfully created.</p>
+            Menu successfully created.
         ');
     }
 
@@ -71,7 +71,7 @@ class AdminMenuController extends AdminBaseController {
         $menu->save();
 
         return Redirect::to('admin/menus')->with('success', '
-            <p>Menu successfully updated.</p>
+            Menu successfully updated.
         ');
     }
 
@@ -80,8 +80,7 @@ class AdminMenuController extends AdminBaseController {
         $menu = Menu::find($id);
         $menu->delete();
         return Redirect::to('admin/menus')->with('success', '
-            <p>Menu successfully deleted.</p>
-            <p><a href="'.URL::to('admin/menus/restore/'.$menu->id).'">Undo</a></p>
+            Menu successfully deleted.
         ');
     }
 
@@ -90,7 +89,7 @@ class AdminMenuController extends AdminBaseController {
         $menu = Menu::withTrashed()->find($id);
         $menu->forceDelete();
         return Redirect::to('admin/menus')->with('success', '
-            <p>Menu successfully deleted forever.</p>
+            Menu successfully deleted forever.
         ');
     }
 
@@ -99,7 +98,7 @@ class AdminMenuController extends AdminBaseController {
         $menu = Menu::withTrashed()->find($id);
         $menu->restore();
         return Redirect::to('admin/menus')->with('success', '
-            <p>Menu successfully restored.</p>
+            Menu successfully restored.
         ');
     }
 
@@ -113,7 +112,7 @@ class AdminMenuController extends AdminBaseController {
         $menu_item->save();
 
         return Redirect::to('admin/menus')->with('success', '
-            <p>Link created.</p>
+            Link created.
         ');
     }
 

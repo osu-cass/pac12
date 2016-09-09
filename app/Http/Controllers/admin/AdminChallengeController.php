@@ -76,7 +76,7 @@ class AdminChallengeController extends AdminCrudController {
         $object->save();
 
         return Redirect::to('admin/' . $this->plural)->with('success', '
-            <p>' . $model . ' successfully created.</p>
+            ' . $model . ' successfully created.
         ');
     }
 
@@ -95,9 +95,8 @@ class AdminChallengeController extends AdminCrudController {
         }
         $object->save();
 
-        return Redirect::to('admin/' . $this->plural . '/edit/' . $id)->with('success', '
-            <p>' . $model . ' successfully updated.</p>
-            <p><a href="' . url('admin/' . $this->plural) . '">Return to index</a></p>
+        return Redirect::to('admin/' . $this->plural)->with('success', '
+            ' . $model . ' successfully updated.
         ');
     }
 }
