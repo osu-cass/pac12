@@ -2,6 +2,12 @@
 
 class School extends Eloquent {
 
+    public static function columns() {
+        return array(
+            'url'
+        );
+    }
+
     public static function schools() {
         return School::all()->map(function ($school) {
             return $school->name;

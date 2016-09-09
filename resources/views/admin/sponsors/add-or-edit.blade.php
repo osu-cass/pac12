@@ -4,12 +4,12 @@
 
 @section('css')
     {{ HTML::style('assets/js/jquery/jquery.datetimepicker.css') }}
-    {{ HTML::style('assets/admin/pages/add-or-edit.css?v=' . VERSION) }}
+    {{ HTML::style('assets/admin/pages/add-or-edit.css') }}
 @stop
 
 @section('js')
     {{ HTML::script('assets/js/ckeditor/ckeditor.js') }}
-    {{ HTML::script('assets/admin/pages/add-or-edit.js?v=' . VERSION) }}
+    {{ HTML::script('assets/admin/pages/add-or-edit.js') }}
     {{ HTML::script('assets/js/jquery/jquery.datetimepicker.js') }}
     <script>
         $(document).ready(function() {
