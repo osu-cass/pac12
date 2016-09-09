@@ -83,7 +83,7 @@ class AdminCrudController extends AdminBaseController {
         $object->save();
 
         return Redirect::to('admin/' . $this->plural)->with('success', '
-            <p>' . $model . ' successfully created.</p>
+            ' . $model . ' successfully created.
         ');
     }
 
@@ -113,8 +113,7 @@ class AdminCrudController extends AdminBaseController {
         $object->save();
 
         return Redirect::to('admin/' . $this->plural . '/edit/' . $id)->with('success', '
-            <p>' . $model . ' successfully updated.</p>
-            <p><a href="' . url('admin/' . $this->plural) . '">Return to index</a></p>
+            ' . $model . ' successfully updated.
         ');
     }
 
@@ -164,8 +163,7 @@ class AdminCrudController extends AdminBaseController {
         $object->delete();
 
         return Redirect::to('admin/' . $this->plural)->with('success', '
-            <p>' . $model . ' successfully deleted.</p>
-            <p><a href="'.url('admin/' . $this->plural . '/restore/' . $object->id).'">Undo</a></p>
+            ' . $model . ' successfully deleted.
         ');
     }
 
@@ -202,7 +200,7 @@ class AdminCrudController extends AdminBaseController {
         $object->forceDelete();
 
         return Redirect::to('admin/' . $this->plural)->with('success', '
-            <p>' . $model . ' successfully deleted forever.</p>
+            ' . $model . ' successfully deleted forever.
         ');
     }
 

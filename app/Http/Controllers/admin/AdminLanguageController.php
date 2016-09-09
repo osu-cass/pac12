@@ -46,7 +46,7 @@ class AdminLanguageController extends AdminBaseController {
         $language->save();
 
         return Redirect::to('admin/languages')->with('success', '
-            <p>Language successfully created.</p>
+            Language successfully created.
         ');
     }
 
@@ -66,7 +66,7 @@ class AdminLanguageController extends AdminBaseController {
         $language->save();
 
         return Redirect::to('admin/languages')->with('success', '
-            <p>Language successfully updated.</p>
+            Language successfully updated.
         ');
     }
 
@@ -74,8 +74,8 @@ class AdminLanguageController extends AdminBaseController {
     {
         if ($id == $this->data['active_language']->id) {
             return Redirect::to('admin/languages/edit/' . $id)->withErrors('
-                <p>You cannot delete the language you\'re currently editing.</p>
-                <p>Switch to a different language before deleting this one.</p>
+                You cannot delete the language you\'re currently editing.
+                Switch to a different language before deleting this one.
             ');
         }
 
@@ -83,7 +83,7 @@ class AdminLanguageController extends AdminBaseController {
         $language->pre_hard_delete();
         $language->forceDelete();
         return Redirect::to('admin/languages')->with('success', '
-            <p>Language "' . $language->name . '" (and related content) successfully deleted forever.</p>
+            Language "' . $language->name . '" (and related content) successfully deleted forever.
         ');
     }
 

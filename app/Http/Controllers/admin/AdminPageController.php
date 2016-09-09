@@ -83,8 +83,7 @@ class AdminPageController extends AdminBaseController {
         }
 
         return Redirect::to('admin/pages')->with('success', '
-            <p>Page successfully created.</p>
-            <p><a href="'.URL::to($page->link()).'" target="_blank">View Page</a></p>
+            Page successfully created.
         ');
     }
 
@@ -160,9 +159,7 @@ class AdminPageController extends AdminBaseController {
         }
 
         return Redirect::to('admin/pages/edit/'.$id)->with('success', '
-            <p>Page successfully updated.</p>
-            <p><a href="'.URL::to($page->link()).'" target="_blank">View Page</a></p>
-            <p><a href="'.URL::to('admin/pages').'">Return to Pages</a></p>
+            Page successfully updated.
         ');
     }
 
@@ -235,8 +232,7 @@ class AdminPageController extends AdminBaseController {
         $page->pre_delete();
         $page->delete();
         return Redirect::to('admin/pages')->with('success', '
-            <p>Page successfully deleted.</p>
-            <p><a href="'.URL::to('admin/pages/restore/'.$page->id).'">Undo</a></p>
+            Page successfully deleted.
         ');
     }
     public function restore($id)
@@ -245,7 +241,7 @@ class AdminPageController extends AdminBaseController {
         $page->pre_restore();
         $page->restore();
         return Redirect::to('admin/pages')->with('success', '
-            <p>Page successfully restored.</p>
+            Page successfully restored.
         ');
     }
     public function hard_delete($id)
@@ -254,7 +250,7 @@ class AdminPageController extends AdminBaseController {
         $page->pre_hard_delete();
         $page->forceDelete();
         return Redirect::to('admin/pages')->with('success', '
-            <p>Page successfully deleted forever.</p>
+            Page successfully deleted forever.
         ');
     }
 
@@ -278,7 +274,7 @@ class AdminPageController extends AdminBaseController {
             // Make sure a page with that URL doesn't already exist
             if (Page::withTrashed()->where('language_id', $target_language->id)->where('url', $page->url)->count()) {
                 $errors .= '
-                    <p>Could not copy page with url "' . $page->url . '" - a page with that url already exists in "' . $target_language->name . '".</p>
+                    Could not copy page with url "' . $page->url . '" - a page with that url already exists in "' . $target_language->name . '".
                 ';
                 continue;
             }
@@ -296,7 +292,7 @@ class AdminPageController extends AdminBaseController {
             }
 
             $success .= '
-                <p>Copied page with url "' . $page->url . '" to "' . $target_language->name . '".</p>
+                Copied page with url "' . $page->url . '" to "' . $target_language->name . '".
             ';
         }
         $redirect = Redirect::to('admin/pages');

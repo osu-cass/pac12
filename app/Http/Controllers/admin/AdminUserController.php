@@ -111,8 +111,7 @@ class AdminUserController extends AdminBaseController {
         $user->save();
 
         return Redirect::to('admin/users/edit/'.$id)->with('success', '
-            <p>User successfully updated.</p>
-            <p><a href="'.URL::to('admin/users').'">Return to Users</a></p>
+            User successfully updated.
         ');
     }
 
@@ -137,8 +136,7 @@ class AdminUserController extends AdminBaseController {
         $user->save();
 
         return Redirect::to('admin/users/edit/'.$id)->with('success', '
-            <p>User\'s password successfully reset.</p>
-            <p><a href="'.URL::to('admin/users').'">Return to Users</a></p>
+            User\'s password successfully reset.
         ');
     }
 
@@ -152,7 +150,7 @@ class AdminUserController extends AdminBaseController {
         $user->delete();
         $user->profiles()->delete();
         return Redirect::to('admin/users')->with('success', '
-            <p>User successfully deleted.</p>'/*.'<p><a href="'.URL::to('admin/users/restore/'.$user->id).'">Undo</a></p>'*/
+            User successfully deleted.'
         );
     }
 
@@ -166,7 +164,7 @@ class AdminUserController extends AdminBaseController {
         $user->forceDelete();
         $user->profiles()->forceDelete();
         return Redirect::to('admin/users')->with('success', '
-            <p>User successfully deleted forever.</p>
+            User successfully deleted forever.
         ');
     }
 
@@ -180,7 +178,7 @@ class AdminUserController extends AdminBaseController {
         $user->restore();
         $user->profiles()->restore();
         return Redirect::to('admin/users')->with('success', '
-            <p>User successfully restored.</p>
+            User successfully restored.
         ');
     }
 
