@@ -71,7 +71,7 @@ class AdminCrudController extends AdminBaseController {
     {
         $model = $this->model;
 
-        $errors = $this->validate($custom);
+        $errors = $this->validate_input($custom);
         if (count($errors)) {
             return Redirect::to('admin/' . $this->plural . '/add')->withInput()->withErrors($errors);
         }
@@ -101,7 +101,7 @@ class AdminCrudController extends AdminBaseController {
     {
         $model = $this->model;
 
-        $errors = $this->validate($custom, $id);
+        $errors = $this->validate_input($custom, $id);
         if (count($errors)) {
             return Redirect::to('admin/' . $this->plural . '/edit/' . $id)->withInput()->withErrors($errors);
         }
@@ -127,25 +127,27 @@ class AdminCrudController extends AdminBaseController {
      * @param int $id - (Optional) ID of member beind edited
      * @return array - An array of error messages to show why validation failed
      */
-//    public function validate(&$custom, $id = null)
-//    {
-//        $errors = array();
-//
-//        $validator = Validator::make(Input::all(), $this->validate_rules($id));
-//        if ($validator->fails()) {
-//            foreach($validator->messages()->all() as $error) {
-//                $errors[] = $error;
-//            }
-//        }
-//
-//        $custom = $this->validate_custom($errors);
-//
-//        return $errors;
-//    }
+    public function validate_input(&$custom, $id = null)
+    {
+        $errors = array();
+
+        $validator = Validator::make(Input::all(), $this->validate_rules($id));
+        if ($validator->fails()) {
+            foreach($validator->messages()->all() as $error) {
+                $errors[] = $error;
+            }
+        }
+
+        $custom = $this->validate_custom($errors);
+
+        return $errors;
+    }
+
     public function validate_rules($id = null)
     {
         return array();
     }
+
     public function validate_custom(&$errors)
     {
         return array();

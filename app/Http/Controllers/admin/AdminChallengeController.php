@@ -64,7 +64,7 @@ class AdminChallengeController extends AdminCrudController {
     {
         $model = $this->model;
 
-        $errors = $this->validate($custom);
+        $errors = $this->validate_input($custom);
         if (count($errors)) {
             return Redirect::to('admin/' . $this->plural . '/add')->withInput()->withErrors($errors);
         }
@@ -84,12 +84,12 @@ class AdminChallengeController extends AdminCrudController {
     {
         $model = $this->model;
 
-        $errors = $this->validate($custom, $id);
+        $errors = $this->validate_input($custom, $id);
         if (count($errors)) {
             return Redirect::to('admin/' . $this->plural . '/edit/' . $id)->withInput()->withErrors($errors);
         }
 
-        $object = $model::all()->findOrFail($id);
+        $object = $model::findOrFail($id);
         foreach ($model::columns() as $column) {
             $object->{$column} = isset($custom[$column]) ? $custom[$column] : Input::get($column);
         }
