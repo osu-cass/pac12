@@ -110,7 +110,7 @@ class AdminUserController extends AdminBaseController {
         $user->school       = Input::get('school');
         $user->save();
 
-        return Redirect::to('admin/users/edit/'.$id)->with('success', '
+        return Redirect::to('admin/users')->with('success', '
             User successfully updated.
         ');
     }

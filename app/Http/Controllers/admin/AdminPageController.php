@@ -158,7 +158,7 @@ class AdminPageController extends AdminBaseController {
             $change->save();
         }
 
-        return Redirect::to('admin/pages/edit/'.$id)->with('success', '
+        return Redirect::to('admin/pages')->with('success', '
             Page successfully updated.
         ');
     }

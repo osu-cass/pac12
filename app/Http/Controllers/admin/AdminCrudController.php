@@ -112,7 +112,7 @@ class AdminCrudController extends AdminBaseController {
         }
         $object->save();
 
-        return Redirect::to('admin/' . $this->plural . '/edit/' . $id)->with('success', '
+        return Redirect::to('admin/' . $this->plural)->with('success', '
             ' . $model . ' successfully updated.
         ');
     }
