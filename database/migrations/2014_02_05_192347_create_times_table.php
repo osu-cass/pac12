@@ -17,7 +17,7 @@ class CreateTimesTable extends Migration {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->date('date');
-            $table->string('activity');
+            $table->string('activity')->nullable();
             $table->integer('minutes');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
