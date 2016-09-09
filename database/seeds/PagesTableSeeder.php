@@ -32,6 +32,26 @@ class PagesTableSeeder extends Seeder
 <p>Help your school secure the title of the conference&rsquo;s most active school by participating in the Pac-12 Fitness Challenge! The Pac-12 Fitness Challenge is a conference-wide initiative promoting regular physical activity. From February 24-28 all twelve schools will be competing to accumulate the most minutes of activity and earn the title of Pac-12 Fitness Challenge Champion!</p>
             '
         ));
+
+        Page::create(array(
+            'name' => 'Previous Champions',
+            'url' => 'past-challenges',
+            'html' => '
+                <p>Spring 2015 Stanford</p>
+
+                <p>2014 Stanford</p>
+
+                <p>2013 UCLA</p>
+
+                <p>2012 ASU</p>
+            '
+        ));
+
+        Page::create(array(
+            'name' => 'Footer',
+            'url' => 'footer',
+            'html' => '&copy; 2007 - 2015 Pac-12 Recreation Challenge'
+        ));
     }
 
 }

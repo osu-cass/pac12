@@ -56,7 +56,7 @@ class AdminPageController extends AdminBaseController {
 
     public function attempt_add()
     {
-        $errors = $this->validate($custom);
+        $errors = $this->validate_input($custom);
         if (count($errors)) {
             return Redirect::to('admin/pages/add')->withInput()->withErrors($errors);
         }
@@ -100,7 +100,7 @@ class AdminPageController extends AdminBaseController {
 
     public function attempt_edit($id)
     {
-        $errors = $this->validate($custom, $id);
+        $errors = $this->validate_input($custom, $id);
         if (count($errors)) {
             return Redirect::to('admin/pages/edit/'.$id)->withInput()->withErrors($errors);
         }
@@ -175,43 +175,43 @@ class AdminPageController extends AdminBaseController {
      * @param int $id - (Optional) ID of page beind edited
      * @return array - An array of error messages to show why validation failed
      */
-//    public function validate(&$custom, $id = null)
-//    {
-//        $errors = array();
-//        $rules = array(
-//            'name' => 'required',
-//            'url' => 'required|alpha_dash'
-//        );
-//        $validator = Validator::make(Input::all(), $rules);
-//        if ($validator->fails()) {
-//            foreach($validator->messages()->all() as $error) {
-//                $errors[] = $error;
-//            }
-//        }
-//        if ($this->url_taken($id)) {
-//            $errors[] = 'A page with that URL in that language already exists.';
-//        }
-//
-//        $published_start = Input::get('published_start');
-//        $published_end = Input::get('published_end');
-//        if (Input::get('published_range') && $published_end && strtotime($published_start) >= strtotime($published_end)) {
-//            $errors[] = 'The publication end time must come after the start time.';
-//        } else if (!Input::get('published_range')) {
-//            // Reset these so that we won't ever get snagged by an impossible range
-//            // if the user has collapsed the publication range expander.
-//            $published_start = $published_end = 0;
-//        }
-//
-//        $custom = array(
-//            'published'         => Input::get('published') ? 1 : 0,
-//            'published_range'   => Input::get('published_range') ? 1 : 0,
-//            'published_start'   => $published_start,
-//            'published_end'     => $published_end,
-//            'url'               => strtolower(Input::get('url'))
-//        );
-//
-//        return $errors;
-//    }
+    public function validate_input(&$custom, $id = null)
+    {
+        $errors = array();
+        $rules = array(
+            'name' => 'required',
+            'url' => 'required|alpha_dash'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            foreach($validator->messages()->all() as $error) {
+                $errors[] = $error;
+            }
+        }
+        if ($this->url_taken($id)) {
+            $errors[] = 'A page with that URL in that language already exists.';
+        }
+
+        $published_start = Input::get('published_start');
+        $published_end = Input::get('published_end');
+        if (Input::get('published_range') && $published_end && strtotime($published_start) >= strtotime($published_end)) {
+            $errors[] = 'The publication end time must come after the start time.';
+        } else if (!Input::get('published_range')) {
+            // Reset these so that we won't ever get snagged by an impossible range
+            // if the user has collapsed the publication range expander.
+            $published_start = $published_end = 0;
+        }
+
+        $custom = array(
+            'published'         => Input::get('published') ? 1 : 0,
+            'published_range'   => Input::get('published_range') ? 1 : 0,
+            'published_start'   => $published_start,
+            'published_end'     => $published_end,
+            'url'               => strtolower(Input::get('url'))
+        );
+
+        return $errors;
+    }
 
     /**
      * Determine whether an URL is already taken in the specified language.
