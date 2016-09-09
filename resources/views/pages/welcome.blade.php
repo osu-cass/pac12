@@ -159,7 +159,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
                 <div class="area">
                     <h1>{{ $challenge->name }}</h1>
                     <h4>{{ date('M d, Y' ,strtotime($challenge->published_start)) . ' - ' . date('M d, Y', strtotime($challenge->published_end))}}</h4>
-                    <p>{{ $challenge->description }}</p>
+                    <p>{!! $challenge->description !!}</p>
                 </div>
             </div>
         </div>
