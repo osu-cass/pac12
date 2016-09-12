@@ -79,8 +79,8 @@ class Page extends Eloquent {
             $html .= '<meta name="keywords" content="' . $this->meta_keywords . '" />' . "\n";
         }
         if ($this->url) {
-            $html .= '<meta name="og:url" content="' . $this->link() . '" />' . "\n";
-            $html .= '<meta name="twitter:url" content="' . $this->link() . '" />' . "\n";
+       //     $html .= '<meta name="og:url" content="' . $this->link() . '" />' . "\n";
+       //     $html .= '<meta name="twitter:url" content="' . $this->link() . '" />' . "\n";
         }
         if ($this->og_type) {
             $html .= '<meta name="og:type" content="' . $this->og_type . '" />' . "\n";
