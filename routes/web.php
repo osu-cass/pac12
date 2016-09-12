@@ -149,59 +149,6 @@ Route::get('admin/pages/delete-module/{id}', array(
 ));
 
 //------------------------
-// AdminMenuController
-//------------------------
-Route::get('admin/menus', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@index'
-));
-Route::get('admin/menus/add', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@add'
-));
-Route::post('admin/menus/add', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@attempt_add'
-));
-Route::get('admin/menus/edit/{id}', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@edit'
-));
-Route::post('admin/menus/edit/{id}', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@attempt_edit'
-));
-Route::post('admin/menus/delete/{id}', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@delete'
-));
-Route::post('admin/menus/hard-delete/{id}', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@hard_delete'
-));
-Route::get('admin/menus/restore/{id}', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@restore'
-));
-Route::post('admin/menus/item-add', array(
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@item_add'
-));
-Route::post('admin/menus/item-order', array( // AJAX
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@item_order'
-));
-Route::post('admin/menus/item-delete', array( // AJAX
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@item_delete'
-));
-Route::post('admin/menus/model-drop-down', array( // AJAX
-    'middleware' => 'admin',
-    'uses' => 'AdminMenuController@model_drop_down'
-));
-
-
-//------------------------
 // AdminChallengeController
 //------------------------
 Route::get('admin/challenges', array(

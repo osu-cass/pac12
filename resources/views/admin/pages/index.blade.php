@@ -55,11 +55,6 @@
                                 <a href="{{ URL::to('admin/pages/edit/' . $page->id) }}" class="btn btn-xs btn-default">
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </a>
-                                @if (!$page->deleted_at)
-                                    <a href="{{ URL::to($page->link()) }}" class="btn btn-xs btn-info" target="_blank">
-                                        <span class="glyphicon glyphicon-eye-open"></span>
-                                    </a>
-                                @endif
                             </td>
                             @if (!$single_language)
                                 <td>{{ Form::checkbox('ids[]', $page->id, false, array('class'=>'idCheckbox')) }}</td>
