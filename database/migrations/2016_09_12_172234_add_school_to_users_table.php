@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSchoolToTimesTable extends Migration
+class AddSchoolToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddSchoolToTimesTable extends Migration
      */
     public function up()
     {
-        Schema::table('times', function($table) {
+        Schema::table('users', function($table) {
             $table->integer('school_id')->unsigned();
 
             $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
@@ -27,8 +27,8 @@ class AddSchoolToTimesTable extends Migration
      */
     public function down()
     {
-        Schema::table('times', function($table) {
-            $table->dropForeign('times_school_id_foreign');
+        Schema::table('users', function($table) {
+            $table->dropForeign('users_school_id_foreign');
         });
     }
 }

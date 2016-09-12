@@ -48,7 +48,7 @@
                 </td>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->type }}</td>
-                <td>{{ $user->school }}</td>
+                <td>{{ School::where('id', $user->school_id)->first()->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->username }}</td>
             </tr>

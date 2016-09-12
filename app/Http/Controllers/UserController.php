@@ -101,10 +101,10 @@ class UserController extends BaseController {
         }
 
         $user = new User;
-        $user->school   = Input::get('school');
-        $user->email    = Input::get('email');
-        $user->password = Hash::make(Input::get('password'));
-        $user->joined   = Carbon::now()->toDateString();
+        $user->school_id = Input::get('school');
+        $user->email     = Input::get('email');
+        $user->password  = Hash::make(Input::get('password'));
+        $user->joined    = Carbon::now()->toDateString();
         $user->save();
         $this->signup_email($user);
         Auth::login($user);
@@ -144,12 +144,12 @@ class UserController extends BaseController {
 
         $profile = Profile::whereUid($uid)->first();
         if (empty($profile)) {
-            $user           = new User;
-            $user->school   = Input::get('school');
-            //$user->name   = $me['first_name'].' '.$me['last_name'];
-            $user->email    = $email;
-            $user->joined   = Carbon::now()->toDateString();
-            //$user->photo  = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+            $user            = new User;
+            $user->school_id = Input::get('school');
+            //$user->name    = $me['first_name'].' '.$me['last_name'];
+            $user->email     = $email;
+            $user->joined    = Carbon::now()->toDateString();
+            //$user->photo   = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
             $user->save();
             $this->signup_email($user);
 
@@ -188,14 +188,14 @@ class UserController extends BaseController {
         }
 
         $user = Auth::user();
-        $user->school   = Input::get('school');
-        $user->password = Hash::make(Input::get('password'));
-        $user->joined   = Carbon::now()->toDateString();
+        $user->school_id = Input::get('school');
+        $user->password  = Hash::make(Input::get('password'));
+        $user->joined    = Carbon::now()->toDateString();
         $user->save();
         $this->signup_email($user);
 
         return Redirect::to('log')->with('success', '
-            Your Preva account has successfully been connected to '.$user->school.'!
+            Your Preva account has successfully been connected!
             You may log minutes through either your Preva account or here.
         ');
     }
@@ -417,7 +417,7 @@ class UserController extends BaseController {
 
         $time = new Time;
         $time->user_id = Auth::user()->id;
-        $time->school = Auth::user()->school;
+        $time->school_id = Auth::user()->school_id;
         $time->date = Input::get('date');
         $time->activity = Input::get('activity');
         $time->type = Input::get('type');
@@ -438,8 +438,8 @@ class UserController extends BaseController {
 
         //Adding to school totals
         if ($currentDate >= $start && $currentDate <= $end) {
-            $count = Time::where('school', '=', Auth::user()->school)->groupBy('user_id')->count();
-            $schoolTotal = Total::where('school', '=', Auth::user()->school)->firstOrFail();
+            $count = Time::where('school_id', '=', Auth::user()->school_id)->groupBy('user_id')->count();
+            $schoolTotal = Total::where('school_id', '=', Auth::user()->school_id)->firstOrFail();
             $schoolTotal->minutes += $minutes;
             $schoolTotal->students = $count;
             $schoolTotal->save();

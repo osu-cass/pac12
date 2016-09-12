@@ -15,12 +15,12 @@ class ChallengeTotals extends Migration {
         Schema::create('totals', function($table) {
 
             $table->increments('id');
-            $table->string('school');
+            $table->integer('school_id')->unsigned();
             $table->integer('challenge_id')->unsigned();
             $table->integer('minutes')->unsigned();
             $table->integer('students')->unsigned();
 
-            //$table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
             $table->foreign('challenge_id')->references('id')->on('challenges')->onDelete('cascade');
         });
     }

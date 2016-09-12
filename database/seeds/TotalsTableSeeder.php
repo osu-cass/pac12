@@ -13,7 +13,7 @@ class TotalsTableSeeder extends Seeder
     {
         foreach (School::all() as $school) {
             Total::create(array(
-                'school' => $school->name,
+                'school_id' => $school->id,
                 'challenge_id' => 1,
                 'minutes' => 0,
                 'students' => 0,

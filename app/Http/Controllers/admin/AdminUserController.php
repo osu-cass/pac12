@@ -25,8 +25,8 @@ class AdminUserController extends AdminBaseController {
                 foreach ($terms as $term) {
                     $term = '%'.$term.'%';
                     $query->where('email', 'like', $term)
-                        ->orWhere('username', 'like', $term)
-                        ->orWhere('school', 'like', $term);
+                        ->orWhere('username', 'like', $term);
+                        //->orWhere('school', 'like', $term); // Might re-add in later
                 }
             });
         }
@@ -66,7 +66,7 @@ class AdminUserController extends AdminBaseController {
         $user->type         = Input::get('type');
         $user->email        = Input::get('email');
         $user->username     = Input::get('username');
-        $user->school       = Input::get('school');
+        $user->school_id    = Input::get('school');
         $user->password     = Hash::make(Input::get('password'));
         $user->save();
 
@@ -107,7 +107,7 @@ class AdminUserController extends AdminBaseController {
         $user->type         = Input::get('type');
         $user->email        = Input::get('email');
         $user->username     = Input::get('username');
-        $user->school       = Input::get('school');
+        $user->school_id    = Input::get('school');
         $user->save();
 
         return Redirect::to('admin/users')->with('success', '
