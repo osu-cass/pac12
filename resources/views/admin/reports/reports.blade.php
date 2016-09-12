@@ -23,7 +23,10 @@
             animate: !$.jqplot.use_excanvas,
             seriesDefaults:{
                 renderer:$.jqplot.BarRenderer,
-                pointLabels: { show: true }
+                pointLabels: {
+                    show: true,
+                    formatString: '%d'
+                }
             },
             axesDefaults: {
                 tickOptions: {
