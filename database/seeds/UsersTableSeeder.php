@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         User::create(array(
             'id'        => 1,
+            'school_id' => 1,
             'type'      => 'superadmin',
             'username'  => 'avadmin',
             'email'     => 'jacobm@angelvisiontech.com',
