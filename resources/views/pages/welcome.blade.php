@@ -2,17 +2,17 @@
 
 @section('title', 'Fitness Challenge')
 
+@section('css')
+{{ HTML::style('assets/jqplot/jquery.jqplot.min.css') }}
+{{ HTML::style('assets/css/pages/welcome.css') }}
+@stop
+
 @section('js')
 {{ HTML::script('assets/jqplot/jquery.jqplot.min.js') }}
 {{ HTML::script('assets/jqplot/plugins/jqplot.barRenderer.min.js') }}
 {{ HTML::script('assets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js') }}
 {{ HTML::script('assets/jqplot/plugins/jqplot.pieRenderer.min.js') }}
 {{ HTML::script('assets/jqplot/plugins/jqplot.pointLabels.min.js') }}
-
-@section('css')
-{{ HTML::style('assets/jqplot/jquery.jqplot.min.css') }}
-{{ HTML::style('assets/css/pages/welcome.css') }}
-@stop
 
 <script>
     $(document).ready(function() {
@@ -114,6 +114,23 @@
         var plot6 = $.jqplot('chart6', [plot6Data], plot1Options);
         @endif
     });
+
+    // jqPlot is stupid
+    @if(isset($countdown))
+    var canvas = document.getElementById('countdown-bar');
+    var context = canvas.getContext('2d');
+    var countdown_total = {{ $countdown }};
+
+    var bar_width = (countdown_total / 2000000) * canvas.width;
+    var bar_height = canvas.height;
+
+    // Draw countdown bar
+    context.fillStyle = "blue";
+    context.fillRect(0, 0, bar_width, bar_height);
+    context.fillStyle = "white";
+    context.fillRect(5, 5, bar_width - 10, bar_height - 10);
+
+    @endif
 </script>
 @stop
 
@@ -132,6 +149,20 @@ if (time() < $start && !Input::get('graphs')) {
     <div id="chartLabels">
         <img src="{{ URL::to('assets/images/graph-labels.png') }}" />
     </div>
+    @if(isset($countdown))
+    <div id="countdown">
+        <canvas id="countdown-bar" width="1000" height="50">
+            Your browser doesn't support the HTML5 Canvas element
+        </canvas>
+        <h3 style="color: white;" align="center">{{ 2000000 - $countdown }} minutes logged so far!</h3>
+        <h3 style="color: white;" align="center">{{ $countdown }} minutes to go!</h3>
+    </div>
+    @if($countdown == 0)
+    <div id="countdown-finished">
+        <h2>We've reached the goal of 2,000,000 minutes!</h2>
+    </div>
+    @endif
+    @endif
 </div>
 <div id="header-sub">
     @include('alerts')

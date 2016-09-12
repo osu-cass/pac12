@@ -20,6 +20,10 @@ class PageController extends BaseController {
                 $challenge = $this->data['challenge'];
                 $this->data['start'] = $challenge->start;
                 $this->data['end'] = $challenge->end;
+                $this->data['countdown'] = max(0, 2000000 - Total::all()->where('challenge_id', '=', $challenge->id)
+                                                                        ->reduce(function($rolling, $val) {
+                    return $rolling + $val->minutes;
+                }));
             } else {
                 $this->data['start'] = null;
                 $this->data['end'] = null;
