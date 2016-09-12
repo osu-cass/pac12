@@ -9,9 +9,7 @@ class School extends Eloquent {
     }
 
     public static function schools() {
-        return School::all()->map(function ($school) {
-            return $school->name;
-        });
+        return School::pluck('name', 'id');
     }
 
     public static function reports() {
