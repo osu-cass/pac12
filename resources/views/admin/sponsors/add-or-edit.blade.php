@@ -54,10 +54,6 @@
         {{ Form::open(array('role'=>'form', 'method'=>'post')) }}
     @endif
 
-    @if (isset($menu_id))
-        {{ Form::hidden('menu_id', $menu_id) }}
-    @endif
-
     <div class="row">
         <div class="col-md-9">
             <table class="table table-striped">

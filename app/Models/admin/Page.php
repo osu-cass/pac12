@@ -53,65 +53,11 @@ class Page extends Eloquent {
         return $this->belongsTo('Language');
     }
 
-    // Handling relationships in controller CRUD methods
-    public function pre_delete()
-    {
-        MenuItem::where('fmodel', 'Page')
-                ->where('fid', $this->id)
-                ->delete();
-    }
-    public function pre_restore()
-    {
-        MenuItem::where('fmodel', 'Page')
-                ->where('fid', $this->id)
-                ->restore();
-    }
     public function pre_hard_delete()
     {
         Change::where('fmodel', 'Page')
               ->where('fid', $this->id)
               ->delete();
-
-        MenuItem::where('fmodel', 'Page')
-                ->where('fid', $this->id)
-                ->forceDelete();
-    }
-
-    ///////////////////////////////////////////////
-    //               Menu Linkable               //
-    ///////////////////////////////////////////////
-    // Menu link related methods - all menu-linkable models must have these
-    // NOTE: Always pull models with their languages initially if you plan on using these!
-    // Otherwise, you're going to be performing repeated queries.  Naughty.
-    public function link()
-    {
-        return URL::to($this->url);
-    }
-    public function link_edit()
-    {
-        return URL::to('admin/pages/edit/' . $this->id);
-    }
-    public function name()
-    {
-        return $this->name;
-    }
-    public function name_full($exclude_language = false)
-    {
-        if ($exclude_language) return $this->name;
-        return $this->language->name . ' | ' . $this->name;
-    }
-    public function name_module()
-    {
-        return 'Page';
-    }
-    public static function drop_down($exclude_language = false)
-    {
-        $pages = Page::orderBy('language_id')->get();
-        $arr = array();
-        foreach ($pages as $page) {
-            $arr[$page->id] = $page->name_full($exclude_language);
-        }
-        return $arr;
     }
 
     ///////////////////////////////////////////////

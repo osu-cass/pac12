@@ -50,10 +50,6 @@
         {{ Form::open(array('role'=>'form', 'method'=>'post')) }}
     @endif
 
-    @if (isset($menu_id))
-        {{ Form::hidden('menu_id', $menu_id) }}
-    @endif
-
     <?php
         $types = array(
             '' => 'Select Type...',

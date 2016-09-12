@@ -24,7 +24,6 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (Session::get('superadmin'))
                     <li{{ $active_page == 'pages' ? ' class="active"' : '' }}><a href="{{ URL::to('admin/pages') }}">Pages</a></li>
-                    <li{{ $active_page == 'menus' ? ' class="active"' : '' }}><a href="{{ URL::to('admin/menus') }}">Menus</a></li>
                     <li{{ $active_page == 'users' ? ' class="active"' : '' }}><a href="{{ URL::to('admin/users') }}">Users</a></li>
                     <li{{ $active_page == 'schools' ? ' class="active"' : '' }}><a href="{{ URL::to('admin/schools') }}">Schools</a></li>
                     <li{{ $active_page == 'badges' ? ' class="active"' : '' }}><a href="{{ URL::to('admin/badges') }}">Badges</a></li>

@@ -46,10 +46,6 @@ class AdminPageController extends AdminBaseController {
 
     public function add()
     {
-        // Toss the menu_id URL variable into the session instead
-        if (Input::get('menu_id')) {
-            return Redirect::to('admin/pages/add')->with('menu_id', Input::get('menu_id'));
-        }
         $this->data['action'] = 'add';
         return View::make('admin.pages.add-or-edit', $this->data);
     }
@@ -75,11 +71,6 @@ class AdminPageController extends AdminBaseController {
             $module->number     = $number;
             $module->html       = $html;
             $module->save();
-        }
-
-        // Are we creating a page from the menu wizard?
-        if (Input::get('menu_id')) {
-            return $this->also_add_menu_item('Page', $page->id);
         }
 
         return Redirect::to('admin/pages')->with('success', '
@@ -229,7 +220,6 @@ class AdminPageController extends AdminBaseController {
     public function delete($id)
     {
         $page = Page::find($id);
-        $page->pre_delete();
         $page->delete();
         return Redirect::to('admin/pages')->with('success', '
             Page successfully deleted.
