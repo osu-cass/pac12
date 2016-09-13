@@ -75,6 +75,15 @@ class AdminChallengeController extends AdminCrudController {
         }
         $object->save();
 
+        foreach (School::all() as $school) {
+            $school_total = new Total;
+            $school_total->school_id = $school->id;
+            $school_total->challenge_id = $object->id;
+            $school_total->minutes = 0;
+            $school_total->students = 0;
+            $school_total->save();
+        }
+
         return Redirect::to('admin/' . $this->plural)->with('success', '
             ' . $model . ' successfully created.
         ');

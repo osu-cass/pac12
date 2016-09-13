@@ -11,13 +11,5 @@ class TotalsTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach (School::all() as $school) {
-            Total::create(array(
-                'school_id' => $school->id,
-                'challenge_id' => 1,
-                'minutes' => 0,
-                'students' => 0,
-            ));
-        }
     }
 }

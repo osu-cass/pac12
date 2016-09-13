@@ -13,7 +13,6 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create(array(
-            'id'        => 1,
             'school_id' => 1,
             'type'      => 'superadmin',
             'username'  => 'avadmin',
