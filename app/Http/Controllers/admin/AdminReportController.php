@@ -37,7 +37,6 @@ class AdminReportController extends AdminBaseController {
             $total->date = $date;
             $totals[] = $total;
             $date = date('Y-m-d', strtotime("+1 day", strtotime($date)));
-
         }
 
         $this->data['start'] = date('Y-m-d', $start);
@@ -46,7 +45,7 @@ class AdminReportController extends AdminBaseController {
         $this->data['dates'] = $dates;
         $this->data['school'] = $school->name;
 
-        $this->data['totals'] = $totals;//Total::get();
+        $this->data['totals'] = $totals;
 
         $this->data['reportType'] = 'Challenge to Date';
 
@@ -56,14 +55,6 @@ class AdminReportController extends AdminBaseController {
     public function daily($date)
     {
         $school = School::where('id', Auth::user()->school_id)->first();
-        //$time = Time::where('date', '=', $date);
-//      $times = DB::table('times')
-//                  ->where('date', '=', $date)
-//                  ->join('users', 'users.id', '=', 'times.user_id')
-//                  ->where('times.school', '=', Auth::user()->school)
-//                  ->select('minutes, type, user.name, user.id, user.name')
-//                  ->get();
-
         $times = Time::where('date', $date)->where('school_id', Auth::user()->school_id)->get();
 
         if (!$times || count($times) <= 0) {
@@ -72,114 +63,19 @@ class AdminReportController extends AdminBaseController {
 
         $school = str_replace(' ', '-', $school->name);
 
-    /*  echo "<pre>";
-    //  print_r($times);
-        echo "</pre>";
-    */
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename='.$school.'-'.$date.'.csv');
 
-    // echo $times[0]->type;
-
-    header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename='.$school->name.'-'.$date.'.csv');
-
-
-    $f = fopen('php://output', 'w');
-
-    fputcsv($f, array('Minutes', 'Type', 'Id', 'Email'), ',');
-
-    foreach ($times as $time) {
-
-            fputcsv($f, array($time->minutes , $time->type, $time->user_id, $time->user->email), ",");
-
-        }
-
-    fclose($f);
-    die();
-
-    /*
-    for ($x = 0; $x <= count($times); $x++) {
-
-        //fputcsv($out, array($row['time'] , $row['activity'] , $row['id'] ,$row['name']));
-
-        echo $times[$x]->minutes; echo $times[$x]->type;  echo $times[$x]->user_id; echo $times[$x]->user->email;
-        echo $x;
-        echo "<br/>";
-
-    }
-
-
-/*  foreach ($times as $time) {
-
-     echo $time->minutes;
-     echo $time->activity();
-     echo $time->user_id;
-     echo $time->user->email;
-
-    }
-*/
-    /*
-//  $time->minutes; $time->activity();  $time->user_id; $time->user->email;
-
-
-        //echo $times[0]->user_id;
-
-        die();
-
-    //  header('Content-Type: text/csv; charset=utf-8');
-    //  header('Content-Disposition: attachment; filename='.$school.'-'.$date.'.csv');
 
         $f = fopen('php://output', 'w');
 
-        $out = fopen('php://output', 'w');
-
-
-        foreach ($times as $time) {
-            $row = array();
-
-            $row['time']     = $time->minutes;
-            $row['activity'] = $time->activity();
-            $row['id']       = $time->user_id;
-            $row['name']     = $time->user->email;
-
-
-        fputcsv($out, array($row['time'] , $row['activity'] , $row['id'] ,$row['name']));
-
-        }
-
-        fputcsv($out, array('this','is some', 'csv "stuff", you know.2'));
-        fclose($out);
-
-    */
-
-    /*
-
         fputcsv($f, array('Minutes', 'Type', 'Id', 'Email'), ',');
 
-    //  echo $times;
-
         foreach ($times as $time) {
-            $row = array();
-
-            $row['time']     = $time->minutes;
-            $row['activity'] = $time->activity();
-            $row['id']       = $time->user_id;
-            $row['name']     = $time->user->email;
-
-        fputcsv($f, $row, ',');
-
-         echo $time->minutes;
-         echo $time->activity();
-         echo $time->user_id;
-         echo $time->user->email;
-
-
-//  echo "1 <br/>";
-
+            fputcsv($f, array($time->minutes , $time->type, $time->user_id, $time->user->email), ",");
         }
-*/
 
-
-
+        fclose($f);
     }
 
     public function range()

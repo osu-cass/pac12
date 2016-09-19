@@ -16,6 +16,19 @@ class PageController extends BaseController {
             $this->data['schools'] = School::orderBy('id')->get();;
             $this->data['totals'] = Total::get();
 
+            if ($this->data['challenge']) {
+                $challenge = $this->data['challenge'];
+                $this->data['start'] = $challenge->start;
+                $this->data['end'] = $challenge->end;
+                $this->data['countdown'] = max(0, 2000000 - Total::all()->where('challenge_id', '=', $challenge->id)
+                                                                        ->reduce(function($rolling, $val) {
+                    return $rolling + $val->minutes;
+                }));
+            } else {
+                $this->data['start'] = null;
+                $this->data['end'] = null;
+            }
+
             // if ($this->mobile) {
                 // return View::make('pages/welcome-mobile', $this->data);
             // } else {

@@ -17,53 +17,71 @@
 
 <script>
     $(document).ready(function() {
-            $.jqplot.config.enablePlugins = true;
-            var options = {
-                // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
-                animate: !$.jqplot.use_excanvas,
-                seriesDefaults:{
-                    renderer:$.jqplot.BarRenderer,
-                    pointLabels: { show: true }
-                },
-                axesDefaults: {
-                    tickOptions: {
-                        showGridline: false
-                    }
-                },
-                axes: {
-                    xaxis: {
-                        renderer: $.jqplot.CategoryAxisRenderer,
-                        ticks: []
-                    },
-                    yaxis: {
-                        showTicks: false,
-                        rendererOptions: {
-                            drawBaseline: false
-                        }
-                    }
-                },
-                highlighter: {
-                    show: false
-                },
-                grid: {
-                    background: 'rgba(0, 0, 0, 0)',
-                    borderWidth: 0
+        $.jqplot.config.enablePlugins = true;
+        var options = {
+            // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+            animate: !$.jqplot.use_excanvas,
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: {
+                    show: true,
+                    formatString: '%d'
                 }
-            };
+            },
+            axesDefaults: {
+                tickOptions: {
+                    showGridline: false
+                }
+            },
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: [
+                        @foreach ($totals as $total)
+                            '{{ substr($total->date, 5) }}',
+                        @endforeach
+                    ]
+                },
+                yaxis: {
+                    showTicks: false,
+                    rendererOptions: {
+                        drawBaseline: false
+                    }
+                }
+            },
+            highlighter: {
+                show: false
+            },
+            grid: {
+                background: 'rgba(0, 0, 0, 0)',
+                borderWidth: 0
+            }
+        };
 
-            var plot0Options = options;
-            plot0Options.axes.xaxis.ticks = [
-                @foreach ($totals as $total)
-                '{{ substr($total->date, 5) }}',
-                @endforeach
-            ];
-            var plot0Data = [
-                @foreach ($totals as $total)
-                {{ ($total->minutes ?  $total->minutes : 0) }},
-                @endforeach
-    ];
-    var plot0 = $.jqplot('chart', [plot0Data], options);
+        // Total time
+        var plot0Data = [
+            @foreach ($totals as $total)
+            {{ ($total->minutes ?  $total->minutes : 0) }},
+            @endforeach
+        ];
 
+        // Clone the "options" object
+        var plot0Options = $.extend(true, {}, options);
+        plot0Options.title = 'Time per Challenge Day';
+
+        var plot0 = $.jqplot('chart0', [plot0Data], plot0Options);
+
+        // Total students
+        var plot1Data = [
+            @foreach ($totals as $total)
+            {{ ($total->students ? $total->students : 0) }},
+            @endforeach
+        ];
+
+        var plot1Options = $.extend(true, {}, options);
+        plot1Options.title = 'Students per Challenge Day';
+
+        var plot1 = $.jqplot('chart1', [plot1Data], plot1Options);
     });
 </script>
 
@@ -84,11 +102,13 @@
         <h1>Reports</h1>
         <h3>{{ $heading }}</h3>
         <div class="section chart<?php
-        if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
+        if (time() < $start && !Input::get('graphs')) {
             echo ' cripple';
         }
         ?>">
-            <div id="chart" style="width:1000px;">
+            <div id="chart0" style="width:1000px;">
+            </div>
+            <div id="chart1" style="width:1000px;">
             </div>
         </div>
         <div class="col-sm-4 pad">
