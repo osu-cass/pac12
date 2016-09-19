@@ -6,10 +6,10 @@ Official repository for the PAC 12 Challenge
 
 ## Setting up a Development Environment
 
-Requires [PHP](https://php.net), [Composer](https://getcomposer.org/),
-[Vagrant](https://www.vagrantup.com/), and [Virtualbox](https://virtualbox.org)
+Requires [PHP](https://php.net) (5.6+), [Composer](https://getcomposer.org/),
+[Vagrant](https://www.vagrantup.com/) (1.7.4+), and [Virtualbox](https://virtualbox.org)
 
-1. Install dependencies with Composer using the command `composer install`
+1. Install dependencies with Composer using the command `php composer.phar install`
 2. Install the Laravel Homestead Vagrant box using the command
    `vagrant box add laravel/homestead`
 3. Generate `Homestead.yaml` (`php vendor/bin/homestead make` on Mac/Linux,
