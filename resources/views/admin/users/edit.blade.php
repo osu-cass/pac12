@@ -53,10 +53,10 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ Form::label('school', 'School') }}
+                            {{ Form::label('school_id', 'School') }}
                         </td>
                         <td>
-                            {{ Form::select('school', School::schools(), null, array('class'=>'form-control', 'placeholder'=>'Email', 'autofocus')) }}
+                            {{ Form::select('school_id', School::schools(), null, array('class'=>'form-control', 'autofocus')) }}
                         </td>
                     </tr>
                 </tbody>

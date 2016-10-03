@@ -107,7 +107,7 @@ class AdminUserController extends AdminBaseController {
         $user->type         = Input::get('type');
         $user->email        = Input::get('email');
         $user->username     = Input::get('username');
-        $user->school_id    = Input::get('school');
+        $user->school_id    = Input::get('school_id');
         $user->save();
 
         return Redirect::to('admin/users')->with('success', '
