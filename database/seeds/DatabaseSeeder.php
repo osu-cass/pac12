@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PagesModulesTableSeeder::class);
         $this->call(ChallengesTableSeeder::class);
         $this->call(TotalsTableSeeder::class);
+        $this->call(BadgesTableSeeder::class);
 
         // Uncomment to run seeders that fill the database with dummy data
         // $this->run_dummy();
