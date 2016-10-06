@@ -80,7 +80,7 @@ class AdminReportController extends AdminBaseController {
     // echo $times[0]->type;
 
     header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename='.$school->name.'-'.$date.'.csv');
+    header('Content-Disposition: attachment; filename='.$school.'-'.$date.'.csv');
 
 
     $f = fopen('php://output', 'w');
