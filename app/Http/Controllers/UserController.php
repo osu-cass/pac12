@@ -450,7 +450,7 @@ class UserController extends BaseController {
         $totalTime = ($totalTime > 120) ? 120 : $totalTime;
 
         $success = 'Your time has been submitted!  Your total for '. $displayDate .': ' . $totalTime . ' minutes.';
-        $success .= ($totalTime == 120) ? '<br />You have reached the maximum of 120 minutes for '. $displayDate .'.  Good job!' : '';
+        $success .= ($totalTime == 120) ? 'You have reached the maximum of 120 minutes for '. $displayDate .'.  Good job!' : '';
 
         $success .= $badgeText;
 
@@ -477,7 +477,7 @@ class UserController extends BaseController {
                 $badgeCheck = UserBadge::where('user_id', '=', $user_id)
                                         ->where('badge_id', '=', $badge->id)->get();
                 if ($badgeCheck->isEmpty()) {
-                    $badgeText .= '<br>You have earned a badge: ' . $badge->name . '!';
+                    $badgeText .= 'You have earned a badge: ' . $badge->name . '!';
                     $userBadge = new UserBadge();
                     $userBadge->user_id = $user_id;
                     $userBadge->badge_id = $badge->id;
