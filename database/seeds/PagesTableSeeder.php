@@ -50,7 +50,7 @@ class PagesTableSeeder extends Seeder
         Page::create(array(
             'name' => 'Footer',
             'url' => 'footer',
-            'html' => '&copy; 2007 - 2015 Pac-12 Recreation Challenge'
+            'html' => '&copy; 2007 - 2016 Pac-12 Recreation Challenge'
         ));
     }
 
