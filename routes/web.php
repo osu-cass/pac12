@@ -36,39 +36,39 @@ Route::get('admin', array(
 // AdminUserController
 //------------------------
 Route::get('admin/users', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@index'
 ));
 Route::get('admin/users/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@add'
 ));
 Route::post('admin/users/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@attempt_add'
 ));
 Route::get('admin/users/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@edit'
 ));
 Route::post('admin/users/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@attempt_edit'
 ));
 Route::post('admin/users/password/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@attempt_edit_password'
 ));
 Route::post('admin/users/delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@delete'
 ));
 Route::post('admin/users/hard-delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@hard_delete'
 ));
 Route::get('admin/users/restore/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminUserController@restore'
 ));
 
@@ -109,42 +109,43 @@ Route::get('admin/languages/make-active/{id}', array(
 // AdminPageController
 //------------------------
 Route::get('admin/pages', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@index'
 ));
 Route::get('admin/pages/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@add'
 ));
 Route::post('admin/pages/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@attempt_add'
 ));
 Route::get('admin/pages/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@edit'
 ));
 Route::post('admin/pages/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@attempt_edit'
 ));
 Route::post('admin/pages/delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@delete'
 ));
 Route::post('admin/pages/hard-delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@hard_delete'
 ));
 Route::get('admin/pages/restore/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@restore'
 ));
 Route::post('admin/pages/copy', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@copy'
 ));
 Route::get('admin/pages/delete-module/{id}', array(
+    'middleware' => 'superadmin',
     'uses' => 'AdminPageController@delete_module'
 ));
 
@@ -152,39 +153,39 @@ Route::get('admin/pages/delete-module/{id}', array(
 // AdminChallengeController
 //------------------------
 Route::get('admin/challenges', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@index'
 ));
 Route::get('admin/challenges/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@add'
 ));
 Route::post('admin/challenges/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@attempt_add'
 ));
 Route::get('admin/challenges/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@edit'
 ));
 Route::post('admin/challenges/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@attempt_edit'
 ));
 Route::post('admin/challenges/delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@delete'
 ));
 Route::post('admin/challenges/hard-delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@hard_delete'
 ));
 Route::get('admin/challenges/restore/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@restore'
 ));
 Route::post('admin/challenges/copy', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminChallengeController@copy'
 ));
 
@@ -192,39 +193,39 @@ Route::post('admin/challenges/copy', array(
 // AdminSponsorsController
 //------------------------
 Route::get('admin/sponsors', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@index'
 ));
 Route::get('admin/sponsors/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@add'
 ));
 Route::post('admin/sponsors/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@attempt_add'
 ));
 Route::get('admin/sponsors/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@edit'
 ));
 Route::post('admin/sponsors/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@attempt_edit'
 ));
 Route::post('admin/sponsors/delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@delete'
 ));
 Route::post('admin/sponsors/hard-delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@hard_delete'
 ));
 Route::get('admin/sponsors/restore/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@restore'
 ));
 Route::post('admin/sponsors/copy', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSponsorController@copy'
 ));
 
@@ -232,39 +233,39 @@ Route::post('admin/sponsors/copy', array(
 // AdminBadgesController
 //------------------------
 Route::get('admin/badges', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@index'
 ));
 Route::get('admin/badges/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@add'
 ));
 Route::post('admin/badges/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@attempt_add'
 ));
 Route::get('admin/badges/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@edit'
 ));
 Route::post('admin/badges/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@attempt_edit'
 ));
 Route::post('admin/badges/delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@delete'
 ));
 Route::post('admin/badges/hard-delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@hard_delete'
 ));
 Route::get('admin/badges/restore/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@restore'
 ));
 Route::post('admin/badges/copy', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminBadgeController@copy'
 ));
 
@@ -272,39 +273,39 @@ Route::post('admin/badges/copy', array(
 // AdminSchoolsController
 //------------------------
 Route::get('admin/schools', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@index'
 ));
 Route::get('admin/schools/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@add'
 ));
 Route::post('admin/schools/add', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@attempt_add'
 ));
 Route::get('admin/schools/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@edit'
 ));
 Route::post('admin/schools/edit/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@attempt_edit'
 ));
 Route::post('admin/schools/delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@delete'
 ));
 Route::post('admin/schools/hard-delete/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@hard_delete'
 ));
 Route::get('admin/schools/restore/{id}', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@restore'
 ));
 Route::post('admin/schools/copy', array(
-    'middleware' => 'admin',
+    'middleware' => 'superadmin',
     'uses' => 'AdminSchoolController@copy'
 ));
 
