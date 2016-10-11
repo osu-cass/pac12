@@ -16,8 +16,8 @@
             format: 'Y-m-d',
             timepicker: false,
             formatDate: 'Y-m-d',
-            minDate: '{{ $challenge->published_start }}',
-            maxDate: '{{ $challenge->published_end }}'
+            minDate: '{{ explode(' ', $challenge->published_start)[0] }}',
+            maxDate: '{{ explode(' ', $challenge->published_end)[0] }}'
         });
 
     });
@@ -201,6 +201,7 @@ $types = array(
 ?>
 
 @section('content')
+{{ $challenge }}
 <a class="btn btn-warning signout" href="{{ URL::to('signout') }}">
     Sign Out
 </a>
