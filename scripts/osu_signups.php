@@ -38,11 +38,11 @@ while($osu_user = mysql_fetch_array($osu_users)){
     // if the user in the row already has their email in the file
     // then we don't want to write it again
     if(!in_array($osu_user['email'], $unique_users)) {
-	// write this row's email address to the file
+    // write this row's email address to the file
         fwrite($file, $osu_user['email'] . "\n");
     } 
 }
 
 // close the file
-fclose($file)	
+fclose($file)   
 ?>

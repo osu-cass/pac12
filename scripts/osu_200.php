@@ -58,8 +58,8 @@ $date = date_format($getdate, 'Y-m-d H:i:s');
 // there already
 foreach($users as $email=>$minutes) {
     if ($minutes >= 200) {
-	    if (!in_array($email, $found_emails)) {
-    	    fwrite($file, $email . " $minutes minutes at $date \n");
-	    }
+        if (!in_array($email, $found_emails)) {
+            fwrite($file, $email . " $minutes minutes at $date \n");
+        }
     } 
-}	
+}   
