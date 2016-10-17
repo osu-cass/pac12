@@ -201,7 +201,6 @@ $types = array(
 ?>
 
 @section('content')
-{{ $challenge }}
 <a class="btn btn-warning signout" href="{{ URL::to('signout') }}">
     Sign Out
 </a>
