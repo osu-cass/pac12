@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Fitness Challenge')
+@section('title', 'PAC12 Challenge')
 
 @section('css')
     {{ HTML::style('assets/css/pages/sponsors.css?v=' . VERSION) }}
