@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'PAC12 Challenge')
+@section('title', 'PAC-12 Challenge')
 
 @section('css')
     {{ HTML::style('assets/jqplot/jquery.jqplot.min.css') }}
