@@ -1,5 +1,5 @@
 <h2>
-    Your new password for the PAC12 Challenge.
+    Your new password for the PAC-12 Challenge.
 </h2>
 <p>
     Your new password is:<br>

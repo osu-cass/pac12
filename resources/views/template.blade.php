@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="{{ asset('assets/images/iphone-icon.png') }}"/>
-    <title>PAC12 | @yield('title')</title>
+    <title>PAC-12 | @yield('title')</title>
 
     {{ HTML::style('//netdna.bootstrapcdn.com/bootswatch/3.0.1/spacelab/bootstrap.min.css') }}
     {{ HTML::style('assets/css/master.css') }}

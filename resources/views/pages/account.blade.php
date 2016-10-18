@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Fitness Challenge')
+@section('title', 'PAC-12 Challenge')
 
 @section('css')
     {{ HTML::style('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css') }}
