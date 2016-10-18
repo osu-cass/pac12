@@ -254,7 +254,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
     <p>For PAC-12 Challenge Events On Your Campus.</p>
 </div>
 
-<div class="section s5">
+<div class="section s3">
     <img src="{{ asset('assets/images/section-3.png') }}" alt="" class="section-divider">
     <div class="row">
         <div class="col-sm-12 col-xs-12">
