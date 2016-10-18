@@ -83,8 +83,8 @@ class UserController extends BaseController {
         );
         Mail::send('emails.new-user', $emailData, function($message) use ($user) {
             $message->to($user->email)
-                ->from('DoNotReply@pac12challenge.org', 'PAC12 Fitness Challenge')
-                ->subject('PAC12 Fitness Challenge');
+                ->from('DoNotReply@pac12challenge.org', 'PAC-12 Challenge')
+                ->subject('PAC-12 Challenge');
         });
     }
 
@@ -243,7 +243,7 @@ class UserController extends BaseController {
             }
             else {
                 $signup = URL::to('/signup');
-                return Redirect::to('signin')->withInput()->withErrors('Current Facebook account is not linked with PAC12.');
+                return Redirect::to('signin')->withInput()->withErrors('Current Facebook account is not linked with PAC-12.');
             }
         }
 
@@ -293,8 +293,8 @@ class UserController extends BaseController {
         );
         Mail::send('emails.forgot-password', $emailData, function($message) use ($user) {
             $message->to($user->email)
-                ->from('DoNotReply@pac12challenge.org', 'PAC12 Fitness Challenge')
-                ->subject('PAC12 Fitness Challenge - Reset Password');
+                ->from('DoNotReply@pac12challenge.org', 'PAC-12 Challenge')
+                ->subject('PAC-12 Challenge - Reset Password');
         });
 
         return View::make('users.forgot-password', $this->data)->with('success', array('A password reset email has been sent to you.'));
@@ -314,8 +314,8 @@ class UserController extends BaseController {
         );
         Mail::send('emails.reset-password', $emailData, function($message) use ($user) {
             $message->to($user->email)
-                ->from('DoNotReply@pac12challenge.org', 'PAC12 Fitness Challenge')
-                ->subject('PAC12 Fitness Challenge - New Password');
+                ->from('DoNotReply@pac12challenge.org', 'PAC-12 Challenge')
+                ->subject('PAC-12 Challenge - New Password');
         });
 
         return Redirect::to('signin')->with('success', 'A new password has been emailed to you.');
