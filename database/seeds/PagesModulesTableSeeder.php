@@ -11,9 +11,17 @@ class PagesModulesTableSeeder extends Seeder
      */
     public function run()
     {
-         PageModule::create(array(
+        PageModule::create(array(
             'page_id'   => 2,
             'number'    => 1,
+            'html'      => '
+<h1>CLICK YOUR SCHOOL&#39;S ICON</h1>
+
+            '
+        ));
+         PageModule::create(array(
+            'page_id'   => 2,
+            'number'    => 2,
             'html'      => '
 <h1>DON&#39;T WANT TO GO MOBILE?</h1>
 
@@ -21,14 +29,6 @@ class PagesModulesTableSeeder extends Seeder
     <li><a href="signup">Register</a></li>
     <li><a href="signin">Log minutes</a></li>
 </ol>
-            '
-        ));
-        PageModule::create(array(
-            'page_id'   => 2,
-            'number'    => 2,
-            'html'      => '
-<h1>CLICK YOUR SCHOOL&#39;S ICON</h1>
-
             '
         ));
         PageModule::create(array(
