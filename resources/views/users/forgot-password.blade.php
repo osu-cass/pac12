@@ -3,7 +3,7 @@
 @section('title', 'Forgot Password')
 
 @section('css')
-{{ HTML::style('assets/css/users/signin.css?v=' . VERSION) }}
+{{ HTML::style('assets/css/users/signin.css') }}
 @stop
 
 @section('header')

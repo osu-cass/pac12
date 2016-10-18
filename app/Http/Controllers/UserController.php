@@ -492,7 +492,6 @@ class UserController extends BaseController {
     public function get_badges()
     {
         $id = Auth::user()->id;
-        print $id;
         $this->data['badges'] = DB::table('badges')
                             ->join('users_badges', 'users_badges.badge_id', '=', 'badges.id')
                             ->where('user_id', '=', $id)
