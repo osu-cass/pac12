@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Fitness Challenge')
+@section('title', 'PAC-12 Challenge')
 
 @section('css')
 {{ HTML::style('assets/css/pages/welcome-mobile.css?v=' . VERSION) }}
@@ -13,7 +13,7 @@
 <div class="rule"></div>
 <div id="header">
     @include('alerts')
-    <h1>PAC-12 FITNESS CHALLENGE</h1>
+    <h1>PAC-12 CHALLENGE</h1>
     <p>
         Building on the success of the annual Fitness Challenge, Pac 12 Recreation
         Departments are collaborating each year to create a series of events and challenges to

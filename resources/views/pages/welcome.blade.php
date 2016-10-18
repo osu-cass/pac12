@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Fitness Challenge')
+@section('title', 'PAC-12 Challenge')
 
 @section('css')
 {{ HTML::style('assets/jqplot/jquery.jqplot.min.css') }}
@@ -143,7 +143,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
 </div>
 <div id="header-sub">
     @include('alerts')
-    <h1>PAC-12 RECREATION CHALLENGE</h1>
+    <h1>PAC-12 CHALLENGE</h1>
     <div class="text">
         {!! $page->html !!}
         <p>
@@ -251,18 +251,13 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
         {{--<a class="icon icon11" href="http://www.colorado.edu/recreation" target="_blank"></a>--}}
         {{--<a class="icon icon12" href="http://campusrec.utah.edu/" target="_blank"></a>--}}
     </div>
-    <p>For Pac-12 Recreation Challenge Events On Your Campus.</p>
+    <p>For PAC-12 Challenge Events On Your Campus.</p>
 </div>
 
-<div class="section s5">
+<div class="section s3">
     <img src="{{ asset('assets/images/section-3.png') }}" alt="" class="section-divider">
     <div class="row">
-        <div class="col-sm-6 col-xs-12">
-            <div class="area">
-                {!! $page->get_module_by_number(2) !!}
-            </div>
-        </div>
-        <div class="col-sm-6 col-xs-12">
+        <div class="col-sm-12 col-xs-12">
             <div class="section-image">
                 {!! $page->get_module_by_number(3) !!}
             </div>
