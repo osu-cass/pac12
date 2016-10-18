@@ -98,7 +98,7 @@
                             {{ Form::label('description', 'Description') }}
                         </td>
                         <td>
-                            {{ Form::textarea('description', null, array('class'=>'ckeditor')) }}
+                            {{ Form::textarea('description', null, array('class'=>'form-control')) }}
                         </td>
                     </tr>
                     {{ Form::hidden('published', '1') }}
