@@ -233,7 +233,7 @@ if (time() < strtotime('2014-02-24') && !Input::get('graphs')) {
 @endif
 <div class="section s3">
     <img src="{{ asset('assets/images/section-3.png') }}" alt="" class="section-divider">
-    {!! $page->get_module_by_number(1) !!}
+    {!! $page->get_module_by_number(2) !!}
     <div class="icons">
         @foreach($schools as $school)
             <a class="icon icon{{ $school->id }}" href="{{ $school->url }}" target="_blank"></a>
