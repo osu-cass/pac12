@@ -73,6 +73,11 @@ class UserController extends BaseController {
 
     public function signup()
     {
+        $currentDate = date('Y-m-d');
+        $this->data['challenge'] = Challenge::where('published_start', '<=', $currentDate)
+            ->where('published_end', '>=', $currentDate)
+            ->first();
+
         return View::make('users.signup', $this->data);
     }
 
