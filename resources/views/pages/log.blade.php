@@ -16,8 +16,8 @@
             format: 'Y-m-d',
             timepicker: false,
             formatDate: 'Y-m-d',
-            minDate: '{{ explode(' ', $challenge->published_start)[0] }}',
-            maxDate: '{{ explode(' ', $challenge->published_end)[0] }}'
+            minDate: '{{ $challenge != null ? explode(' ', $challenge->published_start)[0] : 0 }}',
+            maxDate: '{{ $challenge != null ? explode(' ', $challenge->published_end)[0] : 0 }}'
         });
 
     });
@@ -218,7 +218,18 @@ $types = array(
 </div>
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
+        <?php
+            if ($challenge == null) {
+                echo 'Times can\'t be logged because there isn\'t an ongoing challenge. ';
+                echo 'Check back regularly for details of the next challenge!';
+            }
+        ?>
         {{ Form::open(array('url'=>'post-time')) }}
+        <?php
+            if ($challenge == null) {
+                echo '<fieldset disabled="disabled">';
+            }
+        ?>
             <table class="table">
                 <tbody>
                     <tr>
@@ -259,6 +270,11 @@ $types = array(
             <div class="pad text-right">
                 <input type="submit" class="btn btn-primary" value="Submit" />
             </div>
+        <?php
+            if ($challenge == null) {
+                echo '</fieldset>';
+            }
+        ?>
         {{ Form::close() }}
     </div>
 </div>
