@@ -12,7 +12,10 @@ class PageController extends BaseController {
         $this->data['page'] = $page;
 
         if($url == 'welcome' || $url == '/') {
-            $this->data['challenge'] = Challenge::where('published_end', '>', date("Y-m-d H:i:s"))->orderBy('published_end', 'desc')->first();
+            $currentDate = date('Y-m-d');
+            $this->data['challenge'] = Challenge::where('published_start', '<=', $currentDate)
+                ->where('published_end', '>=', $currentDate)
+                ->first();
             $this->data['schools'] = School::orderBy('id')->get();;
             $this->data['totals'] = Total::get();
 
