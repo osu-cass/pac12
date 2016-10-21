@@ -73,6 +73,11 @@ class UserController extends BaseController {
 
     public function signup()
     {
+        $currentDate = date('Y-m-d');
+        $this->data['challenge'] = Challenge::where('published_start', '<=', $currentDate)
+            ->where('published_end', '>=', $currentDate)
+            ->first();
+
         return View::make('users.signup', $this->data);
     }
 
@@ -373,7 +378,10 @@ class UserController extends BaseController {
             return Redirect::to('signup-preva');
         }
 
-        $this->data['challenge'] = Challenge::orderBy('published_end', 'desc')->first();
+        $currentDate = date('Y-m-d');
+        $this->data['challenge'] = Challenge::where('published_start', '<=', $currentDate)
+            ->where('published_end', '>=', $currentDate)
+            ->first();
 
         return View::make('pages.log', $this->data);
     }
@@ -392,13 +400,14 @@ class UserController extends BaseController {
             return Redirect::to('log')->withInput()->withErrors($validator);
         }
 
-        $challenge = Challenge::orderBy('published_end', 'desc')->first();
+        $currentDate = date('Y-m-d');
+        $challenge = Challenge::where('published_start', '<=', $currentDate)
+                              ->where('published_end', '>=', $currentDate)->first();
 
         $start = date('Y-m-d',  strtotime($challenge->published_start));
         $end = date('Y-m-d',  strtotime($challenge->published_end));
         $date = Input::get('date');
         $displayDate = date('M d, Y', strtotime($date));
-        $currentDate = date('Y-m-d');
 
         if ($date < $start || $date > $end) {
             return Redirect::to('log')->withInput()->withErrors('The date must be between ' . $start . ' and ' . $end);
