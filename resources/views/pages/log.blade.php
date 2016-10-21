@@ -218,6 +218,12 @@ $types = array(
 </div>
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
+        <?php
+            if ($challenge == null) {
+                echo 'Times can\'t be logged because there isn\'t an ongoing challenge. ';
+                echo 'Check back regularly for details of the next challenge!';
+            }
+        ?>
         {{ Form::open(array('url'=>'post-time')) }}
         <?php
             if ($challenge == null) {
