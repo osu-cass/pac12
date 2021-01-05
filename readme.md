@@ -4,6 +4,8 @@ Official repository for the PAC 12 Challenge
 [website](https://pac12challenge.org/) using the
 [Laravel](https://laravel.com/) PHP framework
 
+IMPORTANT: This repo is no longer under development and has been archived.
+
 ## Setting up a Development Environment
 
 Requires [PHP](https://php.net) (5.6+), [Composer](https://getcomposer.org/),
